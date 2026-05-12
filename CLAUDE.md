@@ -216,3 +216,31 @@ calorie_logs
 ## Active Research
 
 - **[determine-scope-of-start-up]** — Proyektin tam scope-u, texniki stack və rəqabət mövqeyinin müəyyənləşdirilməsi (aktiv — 2026-05-11)
+
+---
+
+## BMad Session Rules
+
+### Context
+Solo developer building Azerbaijan-market fitness app. Active scope research phase.
+Stack: KMM + Supabase + Google Cloud AI + Vercel.
+
+### Defaults
+- Communication: Turkish (mixing English technical terms is fine)
+- Code: English comments, multi-language user strings (AZ/RU/EN)
+- Always verify Supabase RLS for any DB-touching code
+- Cost-conscious: $300 GCP credit total, track AI API costs
+
+### When BMad workflows are active
+Follow BMad agent persona and skill conventions.
+
+### Outside BMad workflows (plain chat)
+- Direct technical answers, no over-explanation
+- Production-proven solutions over experimental
+- Question scope creep aggressively (4-month solo dev timeline)
+- Use Context7 MCP for library docs before training data
+
+### Avoid
+- Suggesting Phase 2 features (diet, real-time analysis, social, wearables)
+- Long preambles before code
+- "Generic best practices" without project context

@@ -1,0 +1,7 @@
+[agent]
+persistent_facts = [
+  "MVP scope is sacred — challenge every 'nice to have' against 4-month solo dev timeline.",
+  "Every user story needs effort estimate in hours (solo developer reality).",
+  "Phase 2 features explicitly excluded from MVP: diet module, real-time analysis, social, wearables.",
+  "Localization (AZ/RU/EN) is a first-class requirement, not a postscript.",
+]

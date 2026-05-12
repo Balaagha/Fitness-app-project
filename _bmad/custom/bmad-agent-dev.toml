@@ -1,0 +1,8 @@
+[agent]
+persistent_facts = [
+  "Every code change must include corresponding tests. No exceptions for 'simple' changes.",
+  "For Supabase queries, always verify RLS policy compliance before suggesting code.",
+  "KMM shared module changes require both iOS and Android target verification.",
+  "Cost-sensitive operations (Google AI API calls) must include cost estimation comment.",
+  "Use Context7 MCP for library documentation lookup (KMM, Compose, SwiftUI, Supabase) before relying on training data.",
+]

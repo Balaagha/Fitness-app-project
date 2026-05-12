@@ -70,6 +70,9 @@ Bu tədqiqat aşağıdakı qərarları açacaq:
 | 2026-05-11 | Diet proqramı ayrı modul kimi saxlanır, fitness app-dan yönləndirmə ilə açılacaq (faza 2) | Modullar arasında aydın sərhəd; ilk fazada fokus itməsin | Orta — interfeys dizaynına təsir edir |
 | 2026-05-11 | 3D modellər üçün əvvəlcə Mixamo/Sketchfab kitabxanasından başlamaq, sonra AI generasiya | Google AI kredit limitini qorumaq; hazır kitabxana MVP üçün daha sürətli | Orta — AI kredit büdcəsinə qənaət |
 | 2026-05-11 | Supabase RLS hər cədvəl üçün məcburi, video URL-lər signed URL olacaq | Güvenlik əsası — user datası heç vaxt açıq olmamalı | Yüksək — bütün DB dizaynını təsir edir |
+| 2026-05-12 | BMad override-ları `_bmad/custom/config.toml` üzərindən ediləcək, `_bmad/config.toml`-a toxunulmayacaq | Installer base config-i read-only elan edir; custom/ katmanı doğru override nöqtəsidir | Yüksək — bütün BMad konfiqurasiya dəyişiklikləri bu qaydaya riayət etməli |
+| 2026-05-12 | `user_skill_level=expert`, `adversarial_review_intensity=high`, `default_planning_track=bmad-method` seçildi | Solo dev + 6-7 il təcrübə; human reviewer yoxdur, adversarial bunu kompensasiya etməli | Orta — agent davranışı və review intensivliyinə təsir edir |
+| 2026-05-12 | `skillListingBudgetFraction=0.03` `.claude/settings.json`-a əlavə edildi | 67 skill default %1 limiti aşır; %3 skill description drop-unu aradan qaldırır | Aşağı — yalnız Claude Code skill listing-ə təsir edir |
 
 ## Findings / Sources
 
@@ -78,6 +81,12 @@ Bu tədqiqat aşağıdakı qərarları açacaq:
 1. Google Cloud-da $300 aktiv kredit var (b.alihummatov@gmail.com) — AI video/3D generasiya ilk mərhələdə bu kredit üzərindən ediləcək. Kredit bitdikdə ödənişli plana keçmək lazımdır. Güvən: Yüksək.
 2. Əsas rəqiblər (BetterMe, MyFitnessPal, Nike Training Club, Freeletics) Azərbaycan dilini dəstəkləmir — bu güclü differensiator-dur. Güvən: Yüksək.
 3. Azərbaycan bazarı üçün hədəf qiymət 5–10 AZN/ay — BetterMe analoji qiymətlərə uyğun, yerli alıcı gücünü nəzərə alır. Güvən: Tentative (araşdırılacaq).
+
+**2026-05-12**
+
+4. BMad 4-katmanlı TOML merge istifadə edir: `_bmad/config.toml` → `_bmad/config.user.toml` → `_bmad/custom/config.toml` → `_bmad/custom/config.user.toml` — ən yüksək prioritet ən sondadır. Güvən: Yüksək (mənbə: `resolve_config.py`).
+5. Agent-spesifik `persistent_facts` `_bmad/custom/{agent-adı}.toml` faylları ilə yüklənir — `resolve_customization.py` 3-katmanlı merge ilə həll edir. Güvən: Yüksək (mənbə: kod araşdırması).
+6. `_bmad/bmm/config.yaml` installer-generated YAML-dır (TOML sistemindən ayrıdır) — `user_skill_level` orada deyil, `custom/config.toml`-dakı `[modules.bmm]` ilə override edilir. Güvən: Yüksək.
 
 ## Errors Encountered
 
@@ -91,5 +100,6 @@ Bu tədqiqat aşağıdakı qərarları açacaq:
 - 2026-05-10 — Research initialized
 - 2026-05-10 — Tentative tech stack qeyd edildi: KMM + Supabase + Vercel + Google AI
 - 2026-05-11 — CLAUDE.md tam dolduruldu; 4 qərar + 3 finding feature.md-ə yazıldı
+- 2026-05-12 — BMad tam konfiqurasiya edildi: custom config, agent toml-lar, project-context.md, skill budget; 3 qərar + 3 finding əlavə edildi
 
 ## Notes for Next Session

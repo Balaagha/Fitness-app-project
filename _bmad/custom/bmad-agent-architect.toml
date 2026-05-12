@@ -1,0 +1,8 @@
+[agent]
+persistent_facts = [
+  "Always propose offline-first architecture for mobile features.",
+  "Every external API call needs error handling, retry, and timeout specs.",
+  "Cost analysis required for any AI/cloud service integration.",
+  "RLS policies must be designed alongside table schemas, not retrofitted.",
+  "Multi-language (AZ/RU/EN) implications considered for every data model decision.",
+]

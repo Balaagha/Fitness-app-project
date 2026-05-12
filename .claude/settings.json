@@ -75,5 +75,6 @@
   },
   "enabledPlugins": {
     "product-management@knowledge-work-plugins": true
-  }
+  },
+  "skillListingBudgetFraction": 0.03
 }
