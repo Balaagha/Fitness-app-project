@@ -1,246 +1,182 @@
-# Fitness App — Project Guide
+# fitnessApp — Claude Code Session Guide
 
-## Project Overview
+## Proje Kimliği
 
-Azərbaycan bazarına yönəlmiş AI-dəstəkli fitness tracking tətbiqi. Tətbiq istifadəçilərə fərdi idman proqramları, kalori hədəfləri, AI ilə generasiya edilmiş hərəkət videoları və 3D modellər təklif edir. Həm ev, həm də zal idmanını dəstəkləyir. Gələcəkdə ayrı diet proqramı modulu ilə inteqrasiya nəzərdə tutulur.
+Azərbaycan bazarına yönəlmiş AI-dəstəkli fitness tracking tətbiqi. Həm ev, həm zal idmanını dəstəkləyir. Azərbaycan dilini dəstəkləməyən böyük rəqiblərin (BetterMe, MFP, NTC, Freeletics) boşluğunu doldurur. KMM + Supabase + Google Cloud AI üzərindən qurulur.
 
-**Əsas rəqiblər:** BetterMe, MyFitnessPal, Nike Training Club, Freeletics
-
----
-
-## Vision & Goals
-
-### Məhsul Vizyonu
-- Azərbaycanlı istifadəçilər üçün tam lokallaşdırılmış (AZ / RU / EN) fitness təcrübəsi
-- Hər hərəkət üçün AI-generasiya edilmiş demo videoları
-- Hər hərəkət üçün 3D model (AI ilə generasiya olunmuş və ya hazır kitabxanadan)
-- İstifadəçinin məqsədinə (arıqlamaq / əzələ qazanmaq / forma saxlamaq / güclənmək), fiziki göstəricilərinə və avadanlığına uyğun fərdi proqram
-- Kalori hədəfi, makro balansı, su içmə xatırlatması
-- Ev idmanı + Zal idmanı — hər ikisini dəstəkləmək
-
-### Gələcək Modullar (Faza 2+)
-- **Diet Proqramı** — ayrı modul kimi, fitness app-dan yönləndirmə ilə açılacaq
-- Premium abunəlik modeli
+**Status:** Active research/scope phase (2026-05-12) — Solo developer, ~20h/həftə, IBAM full-time yanında.
 
 ---
 
-## Tentative Tech Stack
+## Claude Code Davranış Qaydaları
 
-> Bütün seçimlər araşdırma mərhələsindədir, dəyişə bilər.
+### Dil
+- Bütün kommunikasiya: **Türkçe** (texniki terminlər İngiliscə ola bilər)
+- Kod şərhlər: English
+- İstifadəçiyə görünən stringlər: AZ (əsas), RU, EN
+
+### BMad Workflow-da
+- BMad agent persona-sını tam benimsə (Amelia, Winston, John, Sally, Mary)
+- `docs/project-context.md` həmişə agent konteksi üçün əsasdır
+- Hər workflow üçün fresh chat — context overflow riskini azaldır
+- Workflow sonunda `bmad-help` növbəti addımı söyləyir
+
+### Plain Chat-da (BMad xaricində)
+- Birbaşa, texniki cavablar — "generic best practices" vermə
+- Production-proven həllər, experimental yox
+- Scope creep-i aqressiv sorğula — 4 aylıq MVP timeline müqəddəsdir
+- KMM/Supabase/SwiftUI/Compose doc üçün Context7 MCP istifadə et
+
+### Qəti Qadağalar
+- **HEÇVAXT** Supabase cədvəli üçün RLS atlama
+- **HEÇVAXT** video/media URL-lərini public et — signed URL (TTL ≤ 1h) məcburidir
+- **HEÇVAXT** Faza 2 xüsusiyyətlərini (diet modulu, real-time kamera analizi, sosial, wearable) MVP-yə əlavə etmə
+- **HEÇVAXT** internet olmadan işləməyən core məşq funksionallığı yaz — offline-first məcburidir
+- **HEÇVAXT** Google AI API-yi cost estimate olmadan çağır — $300 kredit sabit limit
+
+---
+
+## Tech Stack (Tentative — Architecture phase-də dəqiqləşdiriləcək)
 
 | Qat | Texnologiya | Qeyd |
 |-----|-------------|------|
-| **Mobile** | Kotlin Multiplatform Mobile (KMM) | iOS + Android kod paylaşımı |
-| **Backend** | Supabase | Auth, PostgreSQL DB, Storage, Realtime, Edge Functions |
-| **Frontend / Admin** | Vercel (Next.js) | Admin panel, landing page |
-| **AI Content** | Google Cloud AI | $300 kredit mövcuddur — video + 3D generasiya üçün |
-| **3D Modellər** | AI generasiya və ya hazır kitabxana (Mixamo/Sketchfab) | Hərəkət animasiyaları |
-
-### Supabase İstifadə Ssenariləri
-- İstifadəçi auth (email, Google, Apple sign-in)
-- İdman proqramları, hərəkətlər, məşq tarixi — PostgreSQL
-- Video və 3D model faylları — Supabase Storage
-- Real-time progress tracking
-
-### Google Cloud AI İstifadəsi
-- Hərəkət videoları generasiyası (Veo / VideoFX və ya analoji)
-- 3D model / animasiya (alternativ: Mixamo, Sketchfab hazır kitabxanaları)
-- $300 kredit limitini nəzərə alaraq cost-per-content optimizasiyası lazımdır
+| Mobile | Kotlin Multiplatform Mobile (KMM) | iOS + Android kod paylaşımı |
+| Backend | Supabase | Auth, PostgreSQL, Storage, Realtime, Edge Functions |
+| Admin / Web | Next.js → Vercel | Content CMS, landing page |
+| AI Content | Google Cloud AI | $300 kredit (b.alihummatov@gmail.com) |
+| 3D Assets | Mixamo/Sketchfab → AI gen | MVP: kitabxana; sonra: AI generasiya |
 
 ---
 
-## Core Features (MVP Scope — Dəqiqləşdiriləcək)
+## Arxitektura Əsasları
 
-### İstifadəçi Profilləşməsi
-- [ ] Məqsəd seçimi: arıqlamaq / əzələ qazanmaq / forma saxlamaq / güclənmək
-- [ ] Cins, yaş, boy, çəki
-- [ ] Təcrübə səviyyəsi: yeni başlayan / orta / qabaqcıl
-- [ ] Avadanlıq: heç yox (ev) / minimal (rezin, köpük) / tam zal avadanlığı
-- [ ] Həftəlik iş yükü: neçə gün, neçə dəqiqə
+### KMM Strukturu
+- **shared/** — biznes məntiqi, data layer, Ktor network, SQLDelight local DB
+- **iosApp/** — SwiftUI UI layer
+- **androidApp/** — Jetpack Compose UI layer
+- Platform-specific kod minimum; shared-də saxla
+- State management: per-platform native (SwiftUI @State/@StateObject, Compose ViewModel)
 
-### İdman Proqramı
-- [ ] Fərdiləşdirilmiş həftəlik proqram generasiyası
-- [ ] Hər məşq sessiyası üçün strukturlaşdırılmış plan (istiləşmə → əsas hissə → soyuducu)
-- [ ] Hər hərəkət üçün: ad (AZ/RU/EN), AI video, 3D model, təkrar/dəst sayı, istirahət vaxtı
-- [ ] Ev + Zal versiyaları (alternativ hərəkətlər)
-- [ ] Progress tracking: çəki, ölçülər, fotolar
-
-### Kalori & Qidalanma
-- [ ] Gündəlik kalori hədəfi hesablaması (BMR + TDEE)
-- [ ] Makro bölgüsü (protein / karbohidrat / yağ)
-- [ ] Su içmə hədəfi və xatırlatma
-- [ ] Yemək logu (sadə — tam diet modulu faza 2-dədir)
-- [ ] Diet moduluna yönləndirmə (faza 2 açıldıqda aktiv olacaq)
+### Supabase Təhlükəsizlik
+- RLS hər cədvəl üçün schema ilə birlikdə dizayn edilir — sonradan əlavə edilmir
+- Video/3D model URL → signed URL, TTL ≤ 1 saat
+- Edge Functions: AI API proxy, payment webhook, RLS bypass logic (server-side only)
 
 ### AI Content Pipeline
-- [ ] Hər hərəkət üçün video generasiya (Google AI)
-- [ ] 3D model / animasiya (AI generasiya və ya Mixamo/Sketchfab kitabxanası)
-- [ ] Content CMS — yeni hərəkət əlavə etmək üçün admin paneli (Vercel)
+1. Admin panel (Vercel) → yeni hərəkət əlavə
+2. Edge Function → Google AI API video generasiya sorğusu + cost log
+3. Video → Supabase Storage (signed URL saxlanır)
+4. 3D model: əvvəlcə Mixamo kitabxanası; kredit varsa AI generasiya
+5. `exercises.video_url` + `exercises.model_3d_url` yenilənir
 
-### Lokalizasiya
-- [ ] Azərbaycan dili (əsas)
-- [ ] Rus dili
-- [ ] İngilis dili
+### Offline-First
+- Məşq sessiyaları SQLDelight-da lokal saxlanır
+- Network bağlantısı bərpa olduqda Supabase-ə sync edilir
+- Core məşq funksionallığı (plan göstər, set/rep log) offline işləməlidir
 
 ---
 
-## Architecture Notes
+## Data Model (İlkin — Supabase/PostgreSQL)
 
-### Data Model (İlkin — Supabase/PostgreSQL)
-
-```
-users
-  id, email, created_at
-
-user_profiles
-  id, user_id, goal, gender, age, height_cm, weight_kg,
-  experience_level, equipment_type, weekly_days, session_duration_min
-
-exercises
-  id, name_az, name_ru, name_en, category, muscle_groups[],
-  equipment_required, video_url, model_3d_url, difficulty, instructions_az
-
-workouts
-  id, user_id, week_number, created_at
-
-workout_sessions
-  id, workout_id, day_of_week, session_type (warmup/main/cooldown)
-
-workout_session_exercises
-  id, session_id, exercise_id, sets, reps, rest_seconds, order_index
-
-progress_logs
-  id, user_id, date, weight_kg, body_measurements (jsonb), notes, photos[]
-
-calorie_logs
-  id, user_id, date, target_kcal, consumed_kcal, protein_g, carbs_g, fat_g, water_ml
+```sql
+users               (id, email, created_at)
+user_profiles       (id, user_id, goal, gender, age, height_cm, weight_kg,
+                     experience_level, equipment_type, weekly_days, session_duration_min)
+exercises           (id, name_az, name_ru, name_en, category, muscle_groups[],
+                     equipment_required, video_url, model_3d_url, difficulty,
+                     instructions_az, instructions_ru, instructions_en)
+workouts            (id, user_id, week_number, created_at)
+workout_sessions    (id, workout_id, day_of_week, session_type) -- warmup/main/cooldown
+workout_exercises   (id, session_id, exercise_id, sets, reps, rest_sec, order_index)
+progress_logs       (id, user_id, date, weight_kg, body_measurements jsonb, photos[])
+calorie_logs        (id, user_id, date, target_kcal, consumed_kcal, protein_g,
+                     carbs_g, fat_g, water_ml)
 ```
 
-### Mobile Arxitekturası (KMM)
-- **Shared module**: biznes məntiqi, data layer, network (Ktor), local DB (SQLDelight)
-- **iOS target**: SwiftUI
-- **Android target**: Jetpack Compose
-- Supabase Kotlin SDK shared module-da istifadə ediləcək
-- Offline-first: məşq sessiyaları lokal DB-də saxlanır, sonra sync edilir
-
-### AI Content Workflow
-1. Admin panel (Vercel) vasitəsilə yeni hərəkət əlavə edilir
-2. Google AI API-yə video generasiya sorğusu göndərilir
-3. Video → Supabase Storage-a yüklənir, signed URL saxlanır
-4. 3D model: əvvəlcə Mixamo kitabxanasından başlamaq (cost-effective), sonra AI generasiya
-5. exercises cədvəlindəki video_url və model_3d_url yenilənir
-
-### Supabase Security
-- RLS (Row Level Security) hər cədvəl üçün məcburi
-- Video/media URL-lər signed URL olmalı (public access yox)
-- Edge Functions server-side biznes məntiqi üçün (AI API çağırışları)
-
 ---
 
-## Competitive Analysis
+## MVP Scope (Faza 1 — ~4 ay)
 
-| Rəqib | Güclü tərəfləri | Zəif tərəfləri | Bizim üstünlüyümüz |
-|-------|-----------------|----------------|---------------------|
-| BetterMe | Böyük content kitabxanası, güclü marketing | Zəif AZ lokalizasiya, AI yox | Tam AZ dili, AI video/3D |
-| MyFitnessPal | Güclü kalori tracker | Zəif workout planlama | Vahid həll (idman + kalori) |
-| Nike Training Club | Yüksək keyfiyyətli videolar | Pullu, az fərdiləşmə | Yerli bazar, AI fərdiləşmə |
-| Freeletics | AI coach | Baha, AZ dili yox | AZ dili, ev idmanı focus |
+**P0 — Olmadan release yoxdur:**
+- İstifadəçi onboarding (məqsəd, profil, avadanlıq)
+- Fərdi həftəlik proqram generasiyası (ev + zal variantları)
+- Hərəkət kitabxanası — AZ/RU/EN, video, 3D model
+- Set/rep logger + rest timer
+- Kalori hədəfi (BMR+TDEE) + su xatırlatması
+- AZ/RU/EN tam lokalizasiya
 
----
+**P1 — Mümkünsə release-ə daxil:**
+- Progress tracker (çəki, ölçülər, foto)
+- Sadə yemək logu (kalori sayma — diet modulu deyil)
+- Push notification (məşq xatırlatması)
 
-## Monetization Model (Tentative)
-
-- **Freemium**: Əsas proqram pulsuz, premium əlavə xüsusiyyətlər ödənişli
-- **Premium xüsusiyyətlər**:
-  - Tam AI proqram generasiyası (pulsuzda limitli)
-  - Qabaqcıl progress analitikası
-  - Diet modulu inteqrasiyası (faza 2)
-  - Şəxsi mentor / AI coach (gələcək)
-- **Azərbaycan bazarı qiyməti**: 5–10 AZN/ay (BetterMe analoji qiymətə uyğun)
-- **Ödəniş üsulları**: Kart (Visa/MC), local ödəniş (araşdırılacaq)
+**Qəti Faza 2 (sonrakı release):** Diet modulu, real-time hərəkət analizi, sosial, wearable
 
 ---
 
 ## Coding Standards
 
-> Texnologiya stack dəqiqləşdikcə əlavə ediləcək.
+### Ümumi
+- KMM shared module-da `expect/actual` yalnız platform API üçün
+- Lokalizasiya stringləri shared module-da mərkəzləşdirilmiş resurs faylında
+- Hər Supabase sorğusunun yanında RLS policy sənədi
 
-### Ümumi Qaydalar
-- KMM shared module-da platform-specific kod minimum saxla
-- Supabase RLS hər cədvəl üçün məcburi — bunu heç vaxt atla
-- Video URL-lər signed URL olmalı (public access yox)
-- Lokalizasiya stringləri mərkəzləşdirilmiş resurs faylında (shared module-da)
-- Offline-first dizayn: internet olmadan da əsas funksionallıq işləməli
+### Naming
+- DB cədvəlləri / sütunlar: `snake_case`
+- Kotlin: `camelCase` (dəyişən/funksiya), `PascalCase` (sinif/interface)
+- Swift: `camelCase` (dəyişən/funksiya), `PascalCase` (struct/class)
+- Fayllar: `kebab-case` (docs), `PascalCase` (kod faylları)
 
-### Naming Conventions
-- DB: snake_case
-- Kotlin: camelCase (dəyişənlər), PascalCase (siniflər)
-- Swift: camelCase (dəyişənlər), PascalCase (siniflər)
-
----
-
-## Running the Project
-
-> İlk setup tamamlandıqdan sonra doldurulacaq.
-
-### Tələblər
-- [ ] Supabase hesabı + yeni proyekt yaratmaq
-- [ ] Google Cloud hesabı ($300 kredit aktivdir — b.alihummatov@gmail.com)
-- [ ] Vercel hesabı
-- [ ] Android Studio + Kotlin Multiplatform plugin
-- [ ] Xcode (iOS build üçün, Mac tələb olunur)
+### Xərc Nəzarəti
+- Hər Google AI API çağırışı yanında `// cost: ~$X per call` şərhi
+- AI content generation yalnız admin panel üzərindən (istifadəçi tərəfindən tetiklənmir)
 
 ---
 
-## Future Roadmap
+## Rəqabət Mövqeyi
 
-### Faza 1 — MVP
-- İstifadəçi onboarding + profil
-- Fərdi idman proqramı generasiyası
-- Əsas hərəkət kitabxanası (video + 3D)
-- Kalori hədəfi tracker
-- Ev + Zal idman planları
+| Rəqib | Güclü | Zəif | Bizim üstünlük |
+|-------|-------|------|----------------|
+| BetterMe | Böyük kitabxana, güclü marketing | AZ dili yox, AI yox | Tam AZ, AI video/3D |
+| MyFitnessPal | Kalori tracker | Workout planlama zəif | Vahid həll |
+| Nike Training Club | Keyfiyyətli video | Baha, az fərdiləşmə | Yerli bazar, AI fərdiləşmə |
+| Freeletics | AI coach | Baha, AZ dili yox | AZ dili, ev idmanı focus |
 
-### Faza 2 — Diet Modulu
-- Ayrı diet proqramı (fitness app-dan yönləndirmə)
-- Yemək verilənlər bazası (Azərbaycan ərzaqları fokuslu)
-- Qidalanma planı generasiyası
-
-### Faza 3 — Advanced AI
-- Real-time hərəkət düzəliş analizi (kamera vasitəsilə)
-- Sosial xüsusiyyətlər (dostlar, liderlik cədvəli)
-- Geyilebilən cihaz inteqrasiyası (Apple Watch, Wear OS)
+**Əsas differensiator:** Azərbaycan dili + AI generasiya + ev/zal hibrid — heç bir rəqib üçü birlikdə təklif etmir.
 
 ---
 
-## Active Research
+## Monetizasiya
 
-- **[determine-scope-of-start-up]** — Proyektin tam scope-u, texniki stack və rəqabət mövqeyinin müəyyənləşdirilməsi (aktiv — 2026-05-11)
+- **Freemium:** Əsas proqram pulsuz (limitli AI generasiya)
+- **Premium (5–10 AZN/ay):** Tam AI proqram, qabaqcıl analitika, sonsuz generasiya
+- **Ödəniş:** Visa/MC + local ödəniş (araşdırılacaq)
+- **Faza 2:** Diet modulu premium add-on
 
 ---
 
-## BMad Session Rules
+## BMad Setup Referansı
 
-### Context
-Solo developer building Azerbaijan-market fitness app. Active scope research phase.
-Stack: KMM + Supabase + Google Cloud AI + Vercel.
+```
+_bmad/custom/
+├── config.toml              ← user_skill_level = "expert" (yeganə override)
+├── bmad-agent-analyst.toml  ← Phase 1 araşdırma faktları
+├── bmad-agent-architect.toml
+├── bmad-agent-dev.toml
+├── bmad-agent-pm.toml
+└── bmad-agent-ux-designer.toml
 
-### Defaults
-- Communication: Turkish (mixing English technical terms is fine)
-- Code: English comments, multi-language user strings (AZ/RU/EN)
-- Always verify Supabase RLS for any DB-touching code
-- Cost-conscious: $300 GCP credit total, track AI API costs
+docs/
+└── project-context.md       ← BMad agents-in yüklediyi əsas kontekst faylı
+```
 
-### When BMad workflows are active
-Follow BMad agent persona and skill conventions.
+**Qaydalar:**
+- `_bmad/config.toml` — installer-managed, **READ-ONLY**
+- `_bmad/custom/config.toml` — sənin override faylın
+- `skillListingBudgetFraction: 0.03` — `.claude/settings.json`-da (67 skill üçün)
 
-### Outside BMad workflows (plain chat)
-- Direct technical answers, no over-explanation
-- Production-proven solutions over experimental
-- Question scope creep aggressively (4-month solo dev timeline)
-- Use Context7 MCP for library docs before training data
+---
 
-### Avoid
-- Suggesting Phase 2 features (diet, real-time analysis, social, wearables)
-- Long preambles before code
-- "Generic best practices" without project context
+## Aktiv Tədqiqat
+
+- **[determine-scope-of-start-up]** — Proyektin tam scope-u, stack, rəqabət mövqeyi (aktiv — 2026-05-12)

@@ -1,9 +1,7 @@
 # Team / enterprise overrides for _bmad/config.toml.
 # Committed to the repo — applies to every developer on the project.
 # Tables deep-merge over base config; keyed entries merge by key.
+# NOTE: _bmad/config.toml is installer-managed (read-only). Only edit this file.
 
 [modules.bmm]
 user_skill_level = "expert"
-project_knowledge = "research"
-default_planning_track = "bmad-method"
-adversarial_review_intensity = "high"

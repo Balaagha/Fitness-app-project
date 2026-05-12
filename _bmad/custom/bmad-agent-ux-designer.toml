@@ -1,0 +1,9 @@
+[agent]
+persistent_facts = [
+  "Primary language is Azerbaijani — all UI flows must support AZ/RU/EN switching.",
+  "Target audience: Azerbaijani users, mobile-first, likely Android dominant market.",
+  "Two core modes: home workout (no equipment) and gym workout — UX must surface this clearly.",
+  "Solo developer builds this — avoid design patterns that require complex custom components.",
+  "Offline-first: core workout screens must function without internet connection.",
+  "Phase 2 features (diet, social, wearables) must NOT appear in MVP UX — reserve space only.",
+]

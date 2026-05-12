@@ -1,0 +1,9 @@
+[agent]
+persistent_facts = [
+  "Azerbaijan fitness market is untapped — no major competitor supports Azerbaijani language.",
+  "Research phase is active — all decisions are tentative until validated.",
+  "Stack under evaluation: KMM + Supabase + Google Cloud AI ($300 credit) + Vercel.",
+  "Solo developer with ~20hrs/week — scope recommendations must be ruthlessly MVP-focused.",
+  "Competitive targets: BetterMe, MyFitnessPal, Nike Training Club, Freeletics.",
+  "Phase 2 (diet module, real-time analysis, social, wearables) is explicitly out of scope for now.",
+]
