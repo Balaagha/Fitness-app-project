@@ -1,0 +1,5 @@
+.DS_Store
+*.bak.*
+.claude/features/.active
+.claude/backups/
+temp/rsmdt-the-startup
