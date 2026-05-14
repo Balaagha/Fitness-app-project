@@ -4,4 +4,6 @@ persistent_facts = [
   "Every user story needs effort estimate in hours (solo developer reality).",
   "Phase 2 features explicitly excluded from MVP: diet module, real-time analysis, social, wearables.",
   "Localization (AZ/RU/EN) is a first-class requirement, not a postscript.",
+  "file:{project-root}/_bmad-output/planning-artifacts/research/domain-fitness-app-retention-onboarding-az-research-2026-05-12.md",
+  "file:{project-root}/_bmad-output/planning-artifacts/research/market-azerbaijan-ai-fitness-app-research-2026-05-12.md",
 ]
