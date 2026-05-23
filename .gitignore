@@ -1,5 +1,44 @@
+# macOS
 .DS_Store
+
+# Backups & temp
 *.bak.*
+temp/rsmdt-the-startup
+
+# Claude Code state
 .claude/features/.active
 .claude/backups/
-temp/rsmdt-the-startup
+
+# Gradle / KMP / Android build artifacts
+**/build/
+**/.gradle/
+**/.kotlin/
+**/.cxx/
+**/local.properties
+**/captures/
+
+# IntelliJ / Android Studio
+**/.idea/
+**/*.iml
+out/
+
+# Xcode / iOS
+**/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+**/Pods/
+**/Podfile.lock
+**/*.xcuserstate
+DerivedData/
+
+# Node / NPM (if used by web)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key

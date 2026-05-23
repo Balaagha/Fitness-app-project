@@ -1,0 +1,22 @@
+[
+  {"query": "shared/commonMain altinda yeni bir OnboardingViewModel yarat — 7 mecburi sual var, her step icin state saxlamali, sonda PersonaCell calculation edib AI plan trigger sideeffect-i atmali. Koin DI ile baglanmali, SavedStateHandle-da progress saxlanmali.", "should_trigger": true},
+  {"query": "I'm adding a workout logger screen to the shared module. It needs to handle set/rep input, rest timer, and emit a navigation event when the session is complete. What's the right way to structure the state, intents and side-effects?", "should_trigger": true},
+  {"query": "yeni screen var: ProfileEditScreen, commonMain-de. state-in @Serializable olmali ki SavedStateHandle-a yaza bilim. Container init-de profile-i fetch elemeli. necce yazim?", "should_trigger": true},
+  {"query": "WorkoutViewModel-i test etmek isteyirem. expectState ve expectSideEffect islet, init block-da loadExercises cagrilir, ondan sonra completeSet test eleyim. nece quracam test-i?", "should_trigger": true},
+  {"query": "How do I expose a shared Orbit ContainerHost ViewModel to SwiftUI? I want to collect stateFlow and sideEffectFlow from the iOS side without losing navigation events.", "should_trigger": true},
+  {"query": "Calorie tracker screen has a TextField for water intake and a list of meals from SQLDelight. Every time user adds water, it should update state immediately and persist. What pattern do I follow in commonMain?", "should_trigger": true},
+  {"query": "make this composable reactive to viewmodel state changes — currently we pass state as a parameter but i want collectAsState lifecycle-aware behavior", "should_trigger": true},
+  {"query": "shared module-da SessionTimerViewModel-de hot flow var (timer tick eden), bunu ne vaxt subscribe olmali ki UI gone olduqda yaddash leak vermesin?", "should_trigger": true},
+  {"query": "Add a viewmodel for the paywall screen. Two CTAs (trial / annual), on tap should trigger RevenueCat purchase and emit a navigation effect to home on success.", "should_trigger": true},
+  {"query": "we need to split the StreakViewModel intent into two parallel pieces — one loads streak data, the other observes the streak freeze counter. how do i decompose without leaking scopes?", "should_trigger": true},
+  {"query": "Add a new SQLDelight .sq file for storing workout sessions locally with a sync_status column for offline-first. Include the migration script for the upgrade.", "should_trigger": false},
+  {"query": "Set up Koin module for the onboarding feature — repository, use cases, and view models should all be wired up. How do I handle SavedStateHandle injection?", "should_trigger": false},
+  {"query": "Configure Ktor client in shared/commonMain with platform-specific engines (OkHttp Android, Darwin iOS) and a JSON content negotiation block. Where do the engine actuals live?", "should_trigger": false},
+  {"query": "I want to refactor the food recognition screen to use Jetpack Compose Navigation with deep links. What's the best library choice for KMP nav — Voyager or Decompose?", "should_trigger": false},
+  {"query": "Optimize this Postgres query against the calorie_logs table — it's doing a sequential scan over 2M rows when filtering by user_id and date range. Index suggestion?", "should_trigger": false},
+  {"query": "Write the expect/actual declaration for a platform-specific BiometricAuthenticator — Android uses BiometricPrompt, iOS uses LocalAuthentication. Where do the actuals go in the source set tree?", "should_trigger": false},
+  {"query": "Build the Gradle convention plugin so all feature modules share the same compileSdk, kotlin options, and detekt config. Should this go in build-logic/ or buildSrc/?", "should_trigger": false},
+  {"query": "Need to add a NetworkBoundResource style cache-then-network pattern for the exercises feed — local-first, refresh in background, conflict resolution on writes. How do I structure the repository?", "should_trigger": false},
+  {"query": "Review the diff on this branch and look for correctness bugs — I'm about to push and want a sanity check on the new auth flow.", "should_trigger": false},
+  {"query": "How do I migrate the Supabase auth callback to use getClaims() instead of getSession() since we hit RLS issues with stale JWTs? cookie-based SSR in the Next.js admin panel.", "should_trigger": false}
+]
