@@ -207,3 +207,23 @@ app_design.pen-dəki bütün onboarding ekranlarını Compose Multiplatform-da h
   Overwrite this each session; it's a pointer to the NEXT concrete step.
 -->
 
+
+---
+
+## Progress Log
+
+- 2026-05-24 — **Phase 3 COMPLETE** — All 42 onboarding Pencil screens implemented end-to-end (1 deferred: WXUwF Pro Coaching, Faza 2 per CLAUDE.md).
+- Reusable components extracted: HexagonLogo, QuestionScaffold, QuestionProgressBar, VoltOptionCard (+ VoltOptionIconTile), VoltMeasurementCard, VoltSegmentedRow, VoltDisclaimer.
+- Phase 0 (bootstrap), Phase 1 (design system), Phase 2 (mock data + repos), Phase 3 (screens) all green on Android + iOS framework link.
+
+## Notes for Next Session
+
+- **Screens completed (42):** splash, language-select, welcome (+ 4 variants: workout/soft/food/energy/goal), q1-goal, q2-sex, q3-age, q4-height-weight, q5-experience, q6-context, q7-day-session, profile-summary, ai-disclosure, auth-gate, email-signup, email-login, email-verify, pwd-reset-email, pwd-reset-form, paywall, signout-confirm, delete-acc-1, delete-acc-2, pregnancy-nudge, pregnancy-confirm, trimester-postpartum, safe-plan, today-safe-workout, exercise-detail-preg, settings-preg-mode, parental-notice, parental-bottomsheet, login-error, signup-email-exists, rate-limit, offline-banner, q3-age-soft-warning, reset-link-expired.
+- **Skipped (1, intentional):** WXUwF Pro Coaching — Faza 2 per CLAUDE.md "trainer/coach" rule.
+- **Build status:** Android `:androidApp:assembleDebug` ✅ · iOS `:shared:linkDebugFrameworkIosSimulatorArm64` ✅
+- **Screenshots:** 30+ PNG files in `.claude/features/finalize-mobile-ui-for-onboarding/screenshots/`
+- **Locale note:** All AZ canonical copy is committed in `StringsAz`; emulator default locale is `en` so screenshots show EN text. Switch device locale to `az` to verify AZ rendering.
+- **Manual review needed:**
+  - All RU/EN strings carry `// TODO: native review` — require native translator pass before App Store submission.
+  - Some Pencil icons (Apple Sign-In glyph, Google G, exercise-detail video) are zero-dep Canvas approximations; replace with real assets when ready.
+  - Status-bar icon color on splash (yellow bg) may need `WindowInsetsControllerCompat.isAppearanceLightStatusBars = true` tweak.

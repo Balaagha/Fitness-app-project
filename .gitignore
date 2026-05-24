@@ -8,6 +8,7 @@ temp/rsmdt-the-startup
 # Claude Code state
 .claude/features/.active
 .claude/backups/
+.claude/scheduled_tasks.lock
 
 # Gradle / KMP / Android build artifacts
 **/build/

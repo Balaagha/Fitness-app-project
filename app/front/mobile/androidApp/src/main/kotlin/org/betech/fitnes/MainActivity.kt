@@ -4,22 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
+        // Dev-only deep-link plumbing: adb shell am start -W -a android.intent.action.VIEW \
+        //   -d "fitnes://app?devScreen=q1-goal" org.betech.fitnes
+        val devScreen: String? = intent?.data?.getQueryParameter("devScreen")
+
         setContent {
-            App()
+            App(devScreen = devScreen)
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
 }
