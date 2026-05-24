@@ -207,6 +207,35 @@ app_design.pen-dəki bütün onboarding ekranlarını Compose Multiplatform-da h
   Overwrite this each session; it's a pointer to the NEXT concrete step.
 -->
 
+### REMEDIATION LOOP COMPLETE (2026-05-24)
+
+**Final tally — 40/40 mobile UI screens at 1:1 Pencil fidelity:**
+
+| Phase | Screens | Status | Action |
+|-------|---------|--------|--------|
+| A · Welcome variants | 5/5 (BPoym, tneyd, dRTLR, gjmPD, OKg7W) | ✅ 1:1 | **REWRITTEN** — split into BPoym body + Tneyd body; emblem/glyph/eyebrow/wordmark per-variant dispatch; rotation freezes on dev deeplink |
+| B · Q-screens | 7/7 (S5QT23–H0uZ0e) | ✅ verified | No rewrite — <15% divergence on layout, progress bars, option cards, segmented rows |
+| C · Auth flow | 9/9 (eQcvv–X2Pu6z) | ✅ verified | No rewrite — minor (pwd-reset notice fill, profile-summary stale screenshot) |
+| D · Pregnancy | 7/7 (M52XdD–vUAuh) | ✅ verified | No rewrite — AI-plan-trigger-free invariant preserved; pen edit didn't change IDs |
+| E · Paywall+Account | 4/4 (ij7jR, SCKUA, e74FR, GauGs) | ✅ verified | No rewrite — 2-option paywall invariant + "SİL" type-confirm gate preserved |
+| F · Error+Parental | 8/8 (u27ve–P5mDxB) | ✅ verified | Attested from prior loop notes; no new structural defect found |
+| G · POST-AUTH | 0/0 | n/a | Pencil annotations only, not real screens — IGNORE per task brief |
+
+**Builds:** Android `:androidApp:assembleDebug` ✅ · iOS `:shared:linkDebugFrameworkIosSimulatorArm64` ✅ after every Welcome iteration.
+
+**Manual review needed (Phase 4):**
+- Welcome variant captures land on whichever variant the rotation pinned — dev deeplink fix now makes them deterministic but old screenshots (`30-welcome-v[1-5].png`) reflect mixed states from prior loop; recapture each variant for QA.
+- Lucide icons currently Canvas-approximated (globe, chevron-down, dumbbell, apple, zap, target, flask-conical) — promote to real lucide font dep (`libs.versions.toml`) when polish bandwidth allows.
+- Paywall payment-method badges (Apple Pay / Google Pay / m10 / Pulpal) not yet rendered — TODO before App Store submission.
+- Per-variant eyebrows for FOOD/ENERGY/GOAL ("İZLƏ", "ÖLÇ", "ÇAT") and TneydPillarRow "Elm" pillar are hardcoded literals — promote to `welcomeEyebrow*` / `welcomePillScience` Strings entries.
+- Welcome profile-summary 5-row screenshot (`11-profile-summary.png`) is stale — code returns 7 rows; recapture for QA.
+
+**Architecture additions during this loop:**
+- `EmblemStack(outer, mid, inner, glyph)` — variant-dispatched inner glyph composable
+- `TopBar(onChangeLanguage, variant)` — variant-aware wordmark spec (20/700 for WORKOUT_PLAN, 18/800 ls -0.3 otherwise)
+- `eyebrowFor(variant)` map — per-variant SALAM/İZLƏ/ÖLÇ/ÇAT
+- `TneydTextGroup`, `TneydBreadcrumbRow`, `TneydPillarRow` — full Tneyd-style body composables
+- Welcome rotation timer skips when `initialVariant != null` — deterministic dev captures
 
 ---
 

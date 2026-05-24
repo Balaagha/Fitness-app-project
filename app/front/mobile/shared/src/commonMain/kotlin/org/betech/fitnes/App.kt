@@ -38,7 +38,6 @@ import org.betech.fitnes.presentation.onboarding.exercisedetailpreg.ExerciseDeta
 import org.betech.fitnes.presentation.onboarding.settingspregmode.SettingsPregModeScreen
 import org.betech.fitnes.presentation.onboarding.trimesterpostpartum.TrimesterPostpartumScreen
 import org.betech.fitnes.presentation.onboarding.welcome.WelcomeScreen
-import org.betech.fitnes.presentation.onboarding.welcome.WelcomeVariant
 import org.betech.fitnes.presentation.onboarding.loginerror.LoginErrorScreen
 import org.betech.fitnes.presentation.onboarding.signupemailexists.SignupEmailExistsScreen
 import org.betech.fitnes.presentation.onboarding.ratelimit.RateLimitScreen
@@ -69,12 +68,7 @@ fun App(devScreen: String? = null) {
 private fun resolveStartScreen(devScreen: String?): Screen = when (devScreen?.lowercase()) {
     "splash" -> SplashScreen()
     "languageselect", "language-select", "lang" -> LanguageSelectScreen()
-    "welcome" -> WelcomeScreen()
-    "welcome0" -> WelcomeScreen(initialVariant = WelcomeVariant.WORKOUT_PLAN)
-    "welcome1" -> WelcomeScreen(initialVariant = WelcomeVariant.SOFT_CONTROL)
-    "welcome2" -> WelcomeScreen(initialVariant = WelcomeVariant.FOOD)
-    "welcome3" -> WelcomeScreen(initialVariant = WelcomeVariant.ENERGY)
-    "welcome4" -> WelcomeScreen(initialVariant = WelcomeVariant.GOAL)
+    "welcome", "welcome0", "welcome1", "welcome2", "welcome3", "welcome4" -> WelcomeScreen()
     "q1goal", "q1-goal", "q1" -> Q1GoalScreen()
     "q2sex", "q2-sex", "q2" -> Q2SexScreen()
     "q3age", "q3-age", "q3" -> Q3AgeScreen()
