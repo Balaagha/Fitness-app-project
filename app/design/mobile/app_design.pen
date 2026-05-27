@@ -3,579 +3,33 @@
   "children": [
     {
       "type": "frame",
-      "id": "BPoym",
-      "x": 420,
-      "y": 6126,
-      "name": "02 · Welcome",
-      "theme": {},
-      "clip": true,
-      "width": 375,
-      "height": 812,
-      "fill": "$bg",
-      "layout": "vertical",
-      "children": [
-        {
-          "id": "vbtJn",
-          "type": "ref",
-          "ref": "Y01Sc"
-        },
-        {
-          "type": "frame",
-          "id": "E4BPCQ",
-          "name": "content",
-          "width": "fill_container",
-          "height": "fill_container",
-          "layout": "vertical",
-          "children": [
-            {
-              "type": "frame",
-              "id": "EGTM6",
-              "name": "hero",
-              "width": "fill_container",
-              "height": "fill_container",
-              "fill": [
-                "$bg",
-                {
-                  "type": "gradient",
-                  "gradientType": "radial",
-                  "enabled": true,
-                  "rotation": 0,
-                  "size": {
-                    "width": 1.15,
-                    "height": 0.78
-                  },
-                  "colors": [
-                    {
-                      "color": "#DAFB3E2E",
-                      "position": 0
-                    },
-                    {
-                      "color": "#DAFB3E00",
-                      "position": 1
-                    }
-                  ],
-                  "center": {
-                    "y": 0.4
-                  }
-                }
-              ],
-              "layout": "vertical",
-              "padding": [
-                20,
-                28,
-                36,
-                28
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "HFo1l",
-                  "width": "fill_container",
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "R93IWf",
-                      "name": "logo",
-                      "gap": 9,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "SLaYb",
-                          "width": 34,
-                          "height": 34,
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "polygon",
-                              "polygonCount": 6,
-                              "cornerRadius": 4,
-                              "id": "UCbkA",
-                              "layoutPosition": "absolute",
-                              "x": 0,
-                              "y": 0,
-                              "fill": "$accent",
-                              "width": 34,
-                              "height": 34
-                            },
-                            {
-                              "type": "path",
-                              "id": "cVBcu",
-                              "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
-                              "viewBox": [
-                                0,
-                                0,
-                                24,
-                                24
-                              ],
-                              "fill": "$on-accent",
-                              "width": 18,
-                              "height": 18
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "hZsui",
-                          "name": "wordmark",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "M6CPXC",
-                              "fill": "$ink",
-                              "content": "Fit",
-                              "fontFamily": "Inter",
-                              "fontSize": 20,
-                              "fontWeight": "700"
-                            },
-                            {
-                              "type": "text",
-                              "id": "o7QZUi",
-                              "fill": "$moss",
-                              "content": "Lab",
-                              "fontFamily": "Inter",
-                              "fontSize": 20,
-                              "fontWeight": "700"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "lIfet",
-                      "fill": "$surface",
-                      "cornerRadius": 999,
-                      "stroke": {
-                        "thickness": 1,
-                        "fill": "$border-strong"
-                      },
-                      "gap": 7,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "qvW1i",
-                          "width": 15,
-                          "height": 15,
-                          "iconFontName": "globe",
-                          "iconFontFamily": "lucide",
-                          "fill": "$ink-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "ZqixL",
-                          "fill": "$ink",
-                          "content": "AZ",
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "700",
-                          "letterSpacing": 0.5
-                        },
-                        {
-                          "type": "icon_font",
-                          "id": "BL2ef",
-                          "width": 14,
-                          "height": 14,
-                          "iconFontName": "chevron-down",
-                          "iconFontFamily": "lucide",
-                          "fill": "$ink-muted"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "k5oBu5",
-                  "name": "emblemWrap",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "EDoje",
-                      "width": 168,
-                      "height": 168,
-                      "fill": "#00000000",
-                      "cornerRadius": 84,
-                      "stroke": {
-                        "thickness": 1.5,
-                        "fill": "#E6FF0033"
-                      },
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "U6ztnM",
-                          "width": 132,
-                          "height": 132,
-                          "fill": "#00000000",
-                          "cornerRadius": 66,
-                          "stroke": {
-                            "thickness": 1.5,
-                            "fill": "#E6FF0059"
-                          },
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "nVEYK",
-                              "width": 96,
-                              "height": 96,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "polygon",
-                                  "polygonCount": 6,
-                                  "cornerRadius": 8,
-                                  "id": "KIjxM",
-                                  "layoutPosition": "absolute",
-                                  "x": 0,
-                                  "y": 0,
-                                  "fill": "$accent",
-                                  "width": 96,
-                                  "height": 96
-                                },
-                                {
-                                  "type": "path",
-                                  "id": "UD32M",
-                                  "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
-                                  "viewBox": [
-                                    0,
-                                    0,
-                                    24,
-                                    24
-                                  ],
-                                  "fill": "$on-accent",
-                                  "width": 54,
-                                  "height": 54
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "L1Q2u8",
-                  "name": "textGroup",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 14,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "MdLNR",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 10,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "XGNpl",
-                          "fill": "$accent",
-                          "content": "SALAM",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "700",
-                          "letterSpacing": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "SHeIH",
-                          "layout": "vertical",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Q9ElH",
-                              "gap": 10,
-                              "alignItems": "end",
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "f3PO6",
-                                  "gap": 4,
-                                  "alignItems": "end",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "ZO2xC",
-                                      "fill": "$accent",
-                                      "content": "MƏŞQİNİ",
-                                      "lineHeight": 1,
-                                      "fontFamily": "Inter",
-                                      "fontSize": 34,
-                                      "fontWeight": "800",
-                                      "letterSpacing": 0.5
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "wX6Po",
-                                      "width": 3,
-                                      "height": 32,
-                                      "fill": "$accent",
-                                      "cornerRadius": 1
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "J69Sbz",
-                              "fill": "$ink",
-                              "content": "PLANLA",
-                              "lineHeight": 1.05,
-                              "textAlign": "center",
-                              "fontFamily": "Inter",
-                              "fontSize": 34,
-                              "fontWeight": "800",
-                              "letterSpacing": -0.5
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "bJQl5",
-                      "fill": "$ink-muted",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "Super-set, drop-set, tempo — sənin nəzarətində.",
-                      "lineHeight": 1.45,
-                      "textAlign": "center",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "qeJYv",
-                      "width": "fill_container",
-                      "gap": 14,
-                      "padding": [
-                        4,
-                        0
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "k7Ym7m",
-                          "gap": 6,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "BAEMG",
-                              "width": 13,
-                              "height": 13,
-                              "iconFontName": "dumbbell",
-                              "iconFontFamily": "lucide",
-                              "fill": "$accent"
-                            },
-                            {
-                              "type": "text",
-                              "id": "KhS3E",
-                              "fill": "$ink",
-                              "content": "Məşq",
-                              "fontFamily": "Inter",
-                              "fontSize": 12,
-                              "fontWeight": "600"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "lB1dS",
-                          "width": 3,
-                          "height": 3,
-                          "fill": "$border-strong",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "su8aa",
-                          "opacity": 0.55,
-                          "gap": 6,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "eJdjc",
-                              "width": 13,
-                              "height": 13,
-                              "iconFontName": "apple",
-                              "iconFontFamily": "lucide",
-                              "fill": "$ink-muted"
-                            },
-                            {
-                              "type": "text",
-                              "id": "O2CYDH",
-                              "fill": "$ink-muted",
-                              "content": "Qida",
-                              "fontFamily": "Inter",
-                              "fontSize": 12,
-                              "fontWeight": "600"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "odvRQ",
-                          "width": 3,
-                          "height": 3,
-                          "fill": "$border-strong",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "F5ROOw",
-                          "opacity": 0.55,
-                          "gap": 6,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "V4E923",
-                              "width": 13,
-                              "height": 13,
-                              "iconFontName": "zap",
-                              "iconFontFamily": "lucide",
-                              "fill": "$ink-muted"
-                            },
-                            {
-                              "type": "text",
-                              "id": "BDTO1",
-                              "fill": "$ink-muted",
-                              "content": "Enerji",
-                              "fontFamily": "Inter",
-                              "fontSize": 12,
-                              "fontWeight": "600"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "seE6Z",
-                          "width": 3,
-                          "height": 3,
-                          "fill": "$border-strong",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "iMb0h",
-                          "opacity": 0.55,
-                          "gap": 6,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "sdzki",
-                              "width": 13,
-                              "height": 13,
-                              "iconFontName": "target",
-                              "iconFontFamily": "lucide",
-                              "fill": "$ink-muted"
-                            },
-                            {
-                              "type": "text",
-                              "id": "D6pG7D",
-                              "fill": "$ink-muted",
-                              "content": "Hədəf",
-                              "fontFamily": "Inter",
-                              "fontSize": 12,
-                              "fontWeight": "600"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "L0aDS",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 10,
-                      "padding": [
-                        4,
-                        0,
-                        0,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "id": "FN8s5",
-                          "type": "ref",
-                          "ref": "nO5Fr",
-                          "width": "fill_container",
-                          "descendants": {
-                            "xGzBv": {
-                              "content": "Başlayaq"
-                            }
-                          }
-                        },
-                        {
-                          "id": "naj1K",
-                          "type": "ref",
-                          "ref": "fpMvc",
-                          "width": "fill_container",
-                          "descendants": {
-                            "ASoOX": {
-                              "content": "Hesabım var"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
       "id": "S5QT23",
-      "x": 3451,
-      "y": 6280,
+      "x": 4345,
+      "y": 6296,
       "name": "Q1 · Hədəf",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -894,14 +348,32 @@
     {
       "type": "frame",
       "id": "ObxuP",
-      "x": 3871,
-      "y": 6280,
+      "x": 4765,
+      "y": 6296,
       "name": "Q2 · Cinsiyyət",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -1189,14 +661,32 @@
     {
       "type": "frame",
       "id": "qXLw8",
-      "x": 5131,
-      "y": 6280,
+      "x": 6025,
+      "y": 6296,
       "name": "Q4 · Boy + Çəki",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -1701,14 +1191,32 @@
     {
       "type": "frame",
       "id": "i1Vu9",
-      "x": 5551,
-      "y": 6280,
+      "x": 6445,
+      "y": 6296,
       "name": "Q5 · Təcrübə",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -2030,14 +1538,32 @@
     {
       "type": "frame",
       "id": "F16e8",
-      "x": 5971,
-      "y": 6280,
+      "x": 6865,
+      "y": 6296,
       "name": "Q6 · Kontekst",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -9231,14 +8757,32 @@
     {
       "type": "frame",
       "id": "X2Pu6z",
-      "x": 0,
+      "x": 420,
       "y": 6126,
       "name": "01 · Dil Seçimi",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -9461,14 +9005,32 @@
     {
       "type": "frame",
       "id": "owS2i",
-      "x": 4291,
-      "y": 6280,
+      "x": 5185,
+      "y": 6296,
       "name": "Q3 · Yaş",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -10152,14 +9714,32 @@
     {
       "type": "frame",
       "id": "H0uZ0e",
-      "x": 6391,
-      "y": 6280,
+      "x": 7285,
+      "y": 6296,
       "name": "Q7 · Günlər + Sessiya",
       "theme": {},
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 0,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#1A1D08",
+            "position": 0
+          },
+          {
+            "color": "#0A0A0B",
+            "position": 0.55
+          }
+        ]
+      },
       "layout": "vertical",
       "children": [
         {
@@ -10699,7 +10279,35 @@
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": [
+        {
+          "type": "image",
+          "opacity": 0.25,
+          "enabled": true,
+          "url": "bg/s7.jpg",
+          "mode": "fill"
+        },
+        "#0A0A0BD9",
+        {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 180,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#0A0A0B00",
+              "position": 0
+            },
+            {
+              "color": "#0A0A0BF2",
+              "position": 0.85
+            }
+          ]
+        }
+      ],
       "layout": "vertical",
       "children": [
         {
@@ -11323,7 +10931,35 @@
       "clip": true,
       "width": 375,
       "height": 812,
-      "fill": "$bg",
+      "fill": [
+        {
+          "type": "image",
+          "opacity": 0.18,
+          "enabled": true,
+          "url": "bg/s8.jpg",
+          "mode": "fill"
+        },
+        "#0A0A0BE6",
+        {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 180,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#0A0A0B00",
+              "position": 0
+            },
+            {
+              "color": "#0A0A0BF2",
+              "position": 0.85
+            }
+          ]
+        }
+      ],
       "layout": "vertical",
       "children": [
         {
@@ -11666,286 +11302,6 @@
                       "fontFamily": "$font",
                       "fontSize": 13,
                       "fontWeight": "600"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "K1n7u5",
-      "x": 0,
-      "y": 7138,
-      "name": "14 · AuthGate",
-      "theme": {},
-      "clip": true,
-      "width": 375,
-      "height": 812,
-      "fill": "$bg",
-      "layout": "vertical",
-      "children": [
-        {
-          "id": "G1A7zu",
-          "type": "ref",
-          "ref": "Y01Sc"
-        },
-        {
-          "type": "frame",
-          "id": "fPeKv",
-          "width": "fill_container",
-          "height": "fill_container",
-          "layout": "vertical",
-          "gap": 24,
-          "padding": [
-            44,
-            28
-          ],
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "jxsei",
-              "width": "fill_container",
-              "layout": "vertical",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "qBlLM",
-                  "fill": "$ink",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "Hesabını yarat",
-                  "lineHeight": 1.12,
-                  "fontFamily": "$font",
-                  "fontSize": 28,
-                  "fontWeight": "800",
-                  "letterSpacing": -0.3
-                },
-                {
-                  "type": "text",
-                  "id": "dFiWR",
-                  "fill": "$ink-muted",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "İrəliləyişin buludda təhlükəsiz qalsın — yeni cihazda da əldə edə bilərsən.",
-                  "lineHeight": 1.4,
-                  "fontFamily": "$font",
-                  "fontSize": 15,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "HpS1D",
-              "width": "fill_container",
-              "layout": "vertical",
-              "gap": 18,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "nCpyP",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "Ow74L",
-                      "width": "fill_container",
-                      "height": 56,
-                      "fill": "#000000",
-                      "cornerRadius": "$radius-md",
-                      "stroke": {
-                        "thickness": 1,
-                        "fill": "$border-strong"
-                      },
-                      "gap": 10,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "dyNLR",
-                          "width": 20,
-                          "height": 20,
-                          "iconFontName": "apple",
-                          "iconFontFamily": "lucide",
-                          "fill": "#FFFFFF"
-                        },
-                        {
-                          "type": "text",
-                          "id": "h31vdC",
-                          "fill": "#FFFFFF",
-                          "content": "Apple ilə davam et",
-                          "fontFamily": "$font",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "XZfVP",
-                      "width": "fill_container",
-                      "height": 56,
-                      "fill": "#FFFFFF",
-                      "cornerRadius": "$radius-md",
-                      "gap": 10,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "m2gylL",
-                          "width": 20,
-                          "height": 20,
-                          "fill": "#FFFFFF",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "BmXEt",
-                              "fill": "#4285F4",
-                              "content": "G",
-                              "fontFamily": "$font",
-                              "fontSize": 18,
-                              "fontWeight": "800",
-                              "letterSpacing": -0.5
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "m2L7R",
-                          "fill": "#0E0E0E",
-                          "content": "Google ilə davam et",
-                          "fontFamily": "$font",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "CRlxq",
-                      "width": "fill_container",
-                      "gap": 12,
-                      "padding": [
-                        6,
-                        0
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "JPXx1",
-                          "width": "fill_container",
-                          "height": 1,
-                          "fill": "$border"
-                        },
-                        {
-                          "type": "text",
-                          "id": "P61m7",
-                          "fill": "$ink-muted",
-                          "content": "və ya",
-                          "fontFamily": "$font",
-                          "fontSize": 12,
-                          "fontWeight": "500",
-                          "letterSpacing": 0.8
-                        },
-                        {
-                          "type": "frame",
-                          "id": "sIlYl",
-                          "width": "fill_container",
-                          "height": 1,
-                          "fill": "$border"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "MbuoS",
-                      "type": "ref",
-                      "ref": "nO5Fr",
-                      "width": "fill_container",
-                      "descendants": {
-                        "xGzBv": {
-                          "content": "Email ilə davam et"
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "id": "Q1ARd",
-                      "fill": "$ink-muted",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "Onsuz davam et (məhdud rejim)",
-                      "textAlign": "center",
-                      "fontFamily": "$font",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "A2XJG",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 4,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "Y2rlo",
-                      "fill": "$text-tertiary",
-                      "content": "Davam edərək qəbul edirsən:",
-                      "fontFamily": "$font",
-                      "fontSize": 11,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "pMFd7",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "F549ML",
-                          "fill": "$ink-muted",
-                          "content": "Şərtlər",
-                          "fontFamily": "$font",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "type": "text",
-                          "id": "LtSpy",
-                          "fill": "$text-tertiary",
-                          "content": "·",
-                          "fontFamily": "$font",
-                          "fontSize": 11,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "type": "text",
-                          "id": "IHjkz",
-                          "fill": "$ink-muted",
-                          "content": "Məxfilik Siyasəti",
-                          "fontFamily": "$font",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -13519,8 +12875,8 @@
     {
       "type": "frame",
       "id": "M52XdD",
-      "x": -4230,
-      "y": 6120,
+      "x": -5597,
+      "y": 6138,
       "name": "20 · Hamiləlik Nudge",
       "theme": {},
       "clip": true,
@@ -13808,8 +13164,8 @@
     {
       "type": "frame",
       "id": "ij7jR",
-      "x": -7912,
-      "y": 6687,
+      "x": -9021,
+      "y": 6669,
       "name": "22 · Paywall",
       "theme": {},
       "clip": true,
@@ -14416,8 +13772,8 @@
     {
       "type": "frame",
       "id": "e74FR",
-      "x": -7072,
-      "y": 6687,
+      "x": -8181,
+      "y": 6669,
       "name": "24 · Hesab Sil — Təsdiq 1",
       "theme": {},
       "clip": true,
@@ -14763,8 +14119,8 @@
     {
       "type": "frame",
       "id": "GauGs",
-      "x": -6652,
-      "y": 6687,
+      "x": -7761,
+      "y": 6669,
       "name": "25 · Hesab Sil — Təsdiq 2",
       "theme": {},
       "clip": true,
@@ -14980,8 +14336,8 @@
     {
       "type": "frame",
       "id": "WXUwF",
-      "x": -6232,
-      "y": 6687,
+      "x": -7341,
+      "y": 6669,
       "name": "26 · Pro Coaching (Faza 2)",
       "theme": {},
       "clip": true,
@@ -15375,8 +14731,8 @@
     {
       "type": "frame",
       "id": "u27ve",
-      "x": 840,
-      "y": 7960,
+      "x": 3,
+      "y": 8012,
       "name": "V1 · Login — Xəta (AUTH_004/005)",
       "theme": {},
       "clip": true,
@@ -15590,7 +14946,7 @@
       "type": "frame",
       "id": "cYfk5",
       "x": 420,
-      "y": 7960,
+      "y": 8012,
       "name": "V2 · Signup — Email mövcud (AUTH_003)",
       "theme": {},
       "clip": true,
@@ -15838,8 +15194,8 @@
     {
       "type": "frame",
       "id": "IFSQ3",
-      "x": 1260,
-      "y": 7960,
+      "x": 840,
+      "y": 8012,
       "name": "V3 · Rate-limit Modal (AUTH_006)",
       "theme": {},
       "clip": true,
@@ -16087,8 +15443,8 @@
     {
       "type": "frame",
       "id": "K2TtZa",
-      "x": 0,
-      "y": 7960,
+      "x": 1260,
+      "y": 8012,
       "name": "V4 · Offline banner (AUTH_007)",
       "theme": {},
       "clip": true,
@@ -16318,8 +15674,8 @@
     {
       "type": "frame",
       "id": "iNSs8",
-      "x": 4711,
-      "y": 6280,
+      "x": 5605,
+      "y": 6296,
       "name": "V5 · Q3 Yaş soft-warning",
       "theme": {},
       "clip": true,
@@ -16768,7 +16124,7 @@
       "type": "frame",
       "id": "a3Vwh6",
       "x": 1680,
-      "y": 7960,
+      "y": 8012,
       "name": "V6 · Reset — link bitib (AUTH_013)",
       "theme": {},
       "clip": true,
@@ -16892,64 +16248,6 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "fYxom",
-      "x": 0,
-      "y": 6950,
-      "name": "note/xref",
-      "fill": "$surface",
-      "cornerRadius": 999,
-      "stroke": {
-        "thickness": 1,
-        "fill": "$border"
-      },
-      "gap": 6,
-      "padding": [
-        6,
-        10
-      ],
-      "children": [
-        {
-          "type": "text",
-          "id": "gcGRZ",
-          "fill": "$ink-muted",
-          "content": "→ Settings-də açılır (Faza 2)",
-          "fontFamily": "Inter",
-          "fontSize": 11,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "rET0B",
-      "x": 420,
-      "y": 6950,
-      "name": "note/xref",
-      "fill": "$surface",
-      "cornerRadius": 999,
-      "stroke": {
-        "thickness": 1,
-        "fill": "$border"
-      },
-      "gap": 6,
-      "padding": [
-        6,
-        10
-      ],
-      "children": [
-        {
-          "type": "text",
-          "id": "iIkmO",
-          "fill": "$ink-muted",
-          "content": "● Tək giriş nöqtəsi",
-          "fontFamily": "Inter",
-          "fontSize": 11,
-          "fontWeight": "600"
         }
       ]
     },
@@ -17217,8 +16515,8 @@
     {
       "type": "frame",
       "id": "de5Vk",
-      "x": 3451,
-      "y": 7100,
+      "x": 4345,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17246,8 +16544,8 @@
     {
       "type": "frame",
       "id": "s9V1B",
-      "x": 3871,
-      "y": 7100,
+      "x": 4765,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17275,8 +16573,8 @@
     {
       "type": "frame",
       "id": "A0bbVp",
-      "x": 4291,
-      "y": 7100,
+      "x": 5185,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17304,8 +16602,8 @@
     {
       "type": "frame",
       "id": "Y5t6AY",
-      "x": 4711,
-      "y": 7100,
+      "x": 5605,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17333,8 +16631,8 @@
     {
       "type": "frame",
       "id": "s6g89",
-      "x": 5131,
-      "y": 7100,
+      "x": 6025,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17362,8 +16660,8 @@
     {
       "type": "frame",
       "id": "UZL4r",
-      "x": 5551,
-      "y": 7100,
+      "x": 6445,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17391,8 +16689,8 @@
     {
       "type": "frame",
       "id": "q4XWI0",
-      "x": 5971,
-      "y": 7100,
+      "x": 6865,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17420,8 +16718,8 @@
     {
       "type": "frame",
       "id": "jca4b",
-      "x": 6391,
-      "y": 7100,
+      "x": 7285,
+      "y": 7116,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17449,8 +16747,8 @@
     {
       "type": "frame",
       "id": "qJTLA",
-      "x": -7912,
-      "y": 7507,
+      "x": -9021,
+      "y": 7489,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17478,8 +16776,8 @@
     {
       "type": "frame",
       "id": "N7aEJK",
-      "x": -7492,
-      "y": 7507,
+      "x": -8601,
+      "y": 7489,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17507,8 +16805,8 @@
     {
       "type": "frame",
       "id": "I7hb4f",
-      "x": -7072,
-      "y": 7507,
+      "x": -8181,
+      "y": 7489,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17536,8 +16834,8 @@
     {
       "type": "frame",
       "id": "VaQCp",
-      "x": -6652,
-      "y": 7507,
+      "x": -7761,
+      "y": 7489,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17565,8 +16863,8 @@
     {
       "type": "frame",
       "id": "cbUDe",
-      "x": -6232,
-      "y": 7507,
+      "x": -7341,
+      "y": 7489,
       "name": "note/xref",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -17593,697 +16891,8 @@
     },
     {
       "type": "frame",
-      "id": "tneyd",
-      "x": -465,
-      "y": 6126,
-      "name": "0.2 · Welcome",
-      "theme": {},
-      "clip": true,
-      "width": 375,
-      "height": 812,
-      "fill": [
-        "$bg",
-        {
-          "type": "gradient",
-          "gradientType": "radial",
-          "enabled": true,
-          "rotation": 0,
-          "size": {
-            "width": 1.2,
-            "height": 0.78
-          },
-          "colors": [
-            {
-              "color": "#E6FF002E",
-              "position": 0
-            },
-            {
-              "color": "#E6FF0000",
-              "position": 1
-            }
-          ],
-          "center": {
-            "y": 0.4
-          }
-        }
-      ],
-      "layout": "vertical",
-      "children": [
-        {
-          "id": "elnNq",
-          "type": "ref",
-          "ref": "Y01Sc"
-        },
-        {
-          "type": "frame",
-          "id": "fkOhQ",
-          "name": "welcomeBody",
-          "width": "fill_container",
-          "height": "fill_container",
-          "layout": "vertical",
-          "padding": [
-            10,
-            28,
-            40,
-            28
-          ],
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "y4wo8",
-              "name": "topBar · brand + lang",
-              "width": "fill_container",
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "qawae",
-                  "name": "topBar · brandLockup",
-                  "gap": 9,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "tkCzJ",
-                      "width": 34,
-                      "height": 34,
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "polygon",
-                          "polygonCount": 6,
-                          "cornerRadius": 4,
-                          "id": "Zrz1T",
-                          "layoutPosition": "absolute",
-                          "x": 0,
-                          "y": 0,
-                          "fill": "$accent",
-                          "width": 34,
-                          "height": 34
-                        },
-                        {
-                          "type": "path",
-                          "id": "j9shlG",
-                          "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
-                          "viewBox": [
-                            0,
-                            0,
-                            24,
-                            24
-                          ],
-                          "fill": "$on-accent",
-                          "width": 18,
-                          "height": 18
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Eut4g",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "w3bS8",
-                          "fill": "$ink",
-                          "content": "Fit",
-                          "fontFamily": "Inter",
-                          "fontSize": 18,
-                          "fontWeight": "800",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "nnqPm",
-                          "fill": "$moss",
-                          "content": "Lab",
-                          "fontFamily": "Inter",
-                          "fontSize": 18,
-                          "fontWeight": "800",
-                          "letterSpacing": -0.3
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "rl6vc",
-                  "name": "topBar · langPill AZ",
-                  "fill": "$surface",
-                  "cornerRadius": 999,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "$border-strong"
-                  },
-                  "gap": 7,
-                  "padding": [
-                    8,
-                    12
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "vbCJt",
-                      "width": 15,
-                      "height": 15,
-                      "iconFontName": "globe",
-                      "iconFontFamily": "lucide",
-                      "fill": "$ink-muted"
-                    },
-                    {
-                      "type": "text",
-                      "id": "K3t5yJ",
-                      "fill": "$ink",
-                      "content": "AZ",
-                      "fontFamily": "Inter",
-                      "fontSize": 13,
-                      "fontWeight": "700",
-                      "letterSpacing": 0.5
-                    },
-                    {
-                      "type": "icon_font",
-                      "id": "RBHB3",
-                      "width": 14,
-                      "height": 14,
-                      "iconFontName": "chevron-down",
-                      "iconFontFamily": "lucide",
-                      "fill": "$ink-muted"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "w9PBA",
-              "name": "heroEmblem",
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "cNCg5",
-                  "name": "emblemRings",
-                  "width": 220,
-                  "height": 220,
-                  "fill": "#00000000",
-                  "layout": "none",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "xPEby",
-                      "x": 12,
-                      "y": 12,
-                      "width": 196,
-                      "height": 196,
-                      "fill": "#00000000",
-                      "cornerRadius": 98,
-                      "stroke": {
-                        "thickness": 1.5,
-                        "fill": "#E6FF0033"
-                      }
-                    },
-                    {
-                      "type": "frame",
-                      "id": "NcGeA",
-                      "x": 33,
-                      "y": 33,
-                      "width": 154,
-                      "height": 154,
-                      "fill": "#00000000",
-                      "cornerRadius": 77,
-                      "stroke": {
-                        "thickness": 1.5,
-                        "fill": "#E6FF0059"
-                      }
-                    },
-                    {
-                      "type": "frame",
-                      "id": "zzUdO",
-                      "x": 54,
-                      "y": 54,
-                      "name": "emblemLogoMark",
-                      "width": 112,
-                      "height": 112,
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "polygon",
-                          "polygonCount": 6,
-                          "cornerRadius": 8,
-                          "id": "KGxFl",
-                          "layoutPosition": "absolute",
-                          "x": 0,
-                          "y": 0,
-                          "fill": "$accent",
-                          "width": 112,
-                          "height": 112
-                        },
-                        {
-                          "type": "path",
-                          "id": "yxcPU",
-                          "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
-                          "viewBox": [
-                            0,
-                            0,
-                            24,
-                            24
-                          ],
-                          "fill": "$on-accent",
-                          "width": 64,
-                          "height": 64
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "dxl6G",
-              "name": "contentStack",
-              "width": "fill_container",
-              "layout": "vertical",
-              "gap": 12,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "T4utec",
-                  "name": "heroHeadline",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "t0PMHO",
-                      "fill": "$accent",
-                      "content": "SALAM",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontWeight": "700",
-                      "letterSpacing": 2
-                    },
-                    {
-                      "type": "frame",
-                      "id": "OjNHC",
-                      "layout": "vertical",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "S0Qio",
-                          "gap": 10,
-                          "alignItems": "end",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "wDIZm",
-                              "fill": "$ink",
-                              "content": "ÖZ",
-                              "lineHeight": 1,
-                              "fontFamily": "Inter",
-                              "fontSize": 34,
-                              "fontWeight": "800",
-                              "letterSpacing": -0.5
-                            },
-                            {
-                              "type": "frame",
-                              "id": "gQhCa",
-                              "gap": 4,
-                              "alignItems": "end",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "iONgX",
-                                  "fill": "$accent",
-                                  "content": "MƏŞQİNİ",
-                                  "lineHeight": 1,
-                                  "fontFamily": "Inter",
-                                  "fontSize": 34,
-                                  "fontWeight": "800",
-                                  "letterSpacing": 0.5
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "b4jTY",
-                                  "width": 3,
-                                  "height": 32,
-                                  "fill": "$accent",
-                                  "cornerRadius": 1
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "qC3kc",
-                          "fill": "$ink",
-                          "content": "İDARƏ ET",
-                          "lineHeight": 1.05,
-                          "textAlign": "center",
-                          "fontFamily": "Inter",
-                          "fontSize": 34,
-                          "fontWeight": "800",
-                          "letterSpacing": -0.5
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "c8Ddap",
-                      "gap": 8,
-                      "padding": [
-                        8,
-                        0,
-                        0,
-                        0
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "h7MOM6",
-                          "fill": "$accent-soft",
-                          "cornerRadius": 999,
-                          "stroke": {
-                            "thickness": 1,
-                            "fill": "$accent"
-                          },
-                          "padding": [
-                            3,
-                            9
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "xZf8x",
-                              "fill": "$accent",
-                              "content": "məşqini",
-                              "fontFamily": "Inter",
-                              "fontSize": 11,
-                              "fontWeight": "700",
-                              "letterSpacing": 0.4
-                            }
-                          ]
-                        },
-                        {
-                          "type": "icon_font",
-                          "id": "KO6mr",
-                          "opacity": 0.45,
-                          "width": 11,
-                          "height": 11,
-                          "iconFontName": "chevron-right",
-                          "iconFontFamily": "lucide",
-                          "fill": "$ink-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "IU7Re",
-                          "opacity": 0.7,
-                          "fill": "$ink-muted",
-                          "content": "qidanı",
-                          "fontFamily": "Inter",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 0.4
-                        },
-                        {
-                          "type": "icon_font",
-                          "id": "j1RxzO",
-                          "opacity": 0.45,
-                          "width": 11,
-                          "height": 11,
-                          "iconFontName": "chevron-right",
-                          "iconFontFamily": "lucide",
-                          "fill": "$ink-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "oKhD1",
-                          "opacity": 0.7,
-                          "fill": "$ink-muted",
-                          "content": "enerjini",
-                          "fontFamily": "Inter",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 0.4
-                        },
-                        {
-                          "type": "icon_font",
-                          "id": "MINGo",
-                          "opacity": 0.45,
-                          "width": 11,
-                          "height": 11,
-                          "iconFontName": "chevron-right",
-                          "iconFontFamily": "lucide",
-                          "fill": "$ink-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "C9FnV",
-                          "opacity": 0.7,
-                          "fill": "$ink-muted",
-                          "content": "hədəflərini",
-                          "fontFamily": "Inter",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 0.4
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "id": "Xqe22",
-                  "name": "heroSubcopy",
-                  "fill": "$ink-muted",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "Planla, izlə, ölç — hər addım sənin nəzarətində. Elmlə qurulur, AI ilə dəstəklənir.",
-                  "lineHeight": 1.45,
-                  "textAlign": "center",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "frame",
-                  "id": "fQHOV",
-                  "name": "pillarRow · Məşq·Qida·Elm",
-                  "width": "fill_container",
-                  "gap": 14,
-                  "padding": [
-                    4,
-                    0
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "U1MDyl",
-                      "gap": 6,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "Xj6TG",
-                          "width": 13,
-                          "height": 13,
-                          "iconFontName": "dumbbell",
-                          "iconFontFamily": "lucide",
-                          "fill": "$accent"
-                        },
-                        {
-                          "type": "text",
-                          "id": "f0zOns",
-                          "fill": "$ink",
-                          "content": "Məşq",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Piomv",
-                      "width": 3,
-                      "height": 3,
-                      "fill": "$border-strong",
-                      "cornerRadius": 2
-                    },
-                    {
-                      "type": "frame",
-                      "id": "j9ZgLO",
-                      "gap": 6,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "anxxL",
-                          "width": 13,
-                          "height": 13,
-                          "iconFontName": "apple",
-                          "iconFontFamily": "lucide",
-                          "fill": "$accent"
-                        },
-                        {
-                          "type": "text",
-                          "id": "L7xVTv",
-                          "fill": "$ink",
-                          "content": "Qida",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "y81Hzm",
-                      "width": 3,
-                      "height": 3,
-                      "fill": "$border-strong",
-                      "cornerRadius": 2
-                    },
-                    {
-                      "type": "frame",
-                      "id": "thTkT",
-                      "gap": 6,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "FUWkD",
-                          "width": 13,
-                          "height": 13,
-                          "iconFontName": "flask-conical",
-                          "iconFontFamily": "lucide",
-                          "fill": "$accent"
-                        },
-                        {
-                          "type": "text",
-                          "id": "bEjwv",
-                          "fill": "$ink",
-                          "content": "Elm",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "ZZV04",
-                  "name": "ctaStack",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": [
-                    4,
-                    0,
-                    0,
-                    0
-                  ],
-                  "children": [
-                    {
-                      "id": "tVtIT",
-                      "type": "ref",
-                      "ref": "nO5Fr",
-                      "width": "fill_container",
-                      "name": "btnPrimary · Başlayaq",
-                      "descendants": {
-                        "xGzBv": {
-                          "content": "Başlayaq"
-                        }
-                      }
-                    },
-                    {
-                      "id": "ITNk6",
-                      "type": "ref",
-                      "ref": "fpMvc",
-                      "width": "fill_container",
-                      "name": "btnSecondary · Hesabım var",
-                      "descendants": {
-                        "ASoOX": {
-                          "content": "Hesabım var"
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "rmSNZ",
-      "x": -87,
-      "y": 7012,
-      "name": "annotation/lang-transition",
-      "fill": "$surface",
-      "cornerRadius": 999,
-      "stroke": {
-        "thickness": 1,
-        "fill": "$accent"
-      },
-      "gap": 8,
-      "padding": [
-        8,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "nNHBS",
-          "width": 14,
-          "height": 14,
-          "iconFontName": "arrow-right",
-          "iconFontFamily": "lucide",
-          "fill": "$accent"
-        },
-        {
-          "type": "text",
-          "id": "h36xx3",
-          "fill": "$ink",
-          "content": "DİL SEÇİMİ EKRANI",
-          "fontFamily": "Inter",
-          "fontSize": 11,
-          "fontWeight": "700",
-          "letterSpacing": 1.5
-        }
-      ]
-    },
-    {
-      "type": "frame",
       "id": "s7yM8w",
-      "x": -885,
+      "x": -503,
       "y": 6126,
       "name": "0.1 · Splash",
       "clip": true,
@@ -19133,8 +17742,8 @@
     {
       "type": "frame",
       "id": "pqupj",
-      "x": -3810,
-      "y": 6120,
+      "x": -5177,
+      "y": 6138,
       "name": "21 · Hamiləlik — Təsdiq",
       "clip": true,
       "width": 375,
@@ -20374,7 +18983,7 @@
               "type": "frame",
               "id": "l1BzzI",
               "width": "fill_container",
-              "height": "fill_container"
+              "height": 360
             },
             {
               "type": "frame",
@@ -20420,7 +19029,7 @@
                   "content": "Məşqini bir yerdə",
                   "lineHeight": 1.05,
                   "fontFamily": "Inter",
-                  "fontSize": 36,
+                  "fontSize": 38,
                   "fontWeight": "800",
                   "letterSpacing": -0.8
                 },
@@ -20475,7 +19084,7 @@
               "type": "frame",
               "id": "q03dy4",
               "width": "fill_container",
-              "height": 36
+              "height": "fill_container"
             },
             {
               "type": "frame",
@@ -20634,7 +19243,7 @@
               "type": "frame",
               "id": "vsqGo",
               "width": "fill_container",
-              "height": "fill_container"
+              "height": 360
             },
             {
               "type": "frame",
@@ -20680,7 +19289,7 @@
                   "content": "Təxmin yox.",
                   "lineHeight": 1.05,
                   "fontFamily": "Inter",
-                  "fontSize": 42,
+                  "fontSize": 38,
                   "fontWeight": "800",
                   "letterSpacing": -0.8
                 },
@@ -20772,7 +19381,7 @@
               "type": "frame",
               "id": "NIHKy",
               "width": "fill_container",
-              "height": 36
+              "height": "fill_container"
             },
             {
               "type": "frame",
@@ -20931,7 +19540,7 @@
               "type": "frame",
               "id": "CzaBV",
               "width": "fill_container",
-              "height": "fill_container"
+              "height": 360
             },
             {
               "type": "frame",
@@ -20977,7 +19586,7 @@
                   "content": "AI təklif edir.",
                   "lineHeight": 1.05,
                   "fontFamily": "Inter",
-                  "fontSize": 42,
+                  "fontSize": 38,
                   "fontWeight": "800",
                   "letterSpacing": -0.8
                 },
@@ -21151,7 +19760,7 @@
               "type": "frame",
               "id": "likDr",
               "width": "fill_container",
-              "height": 36
+              "height": "fill_container"
             },
             {
               "type": "frame",
@@ -21180,11 +19789,11 @@
     {
       "type": "frame",
       "id": "oeVgP",
-      "x": 610,
+      "x": 669,
       "y": 9190,
       "name": "02e+f · Welcome · YERLİ + BAŞLA",
       "clip": true,
-      "width": 780,
+      "width": 808,
       "height": 812,
       "fill": "#050507",
       "gap": 60,
@@ -21199,12 +19808,12 @@
           "fill": [
             {
               "type": "image",
-              "opacity": 0.5,
+              "opacity": 0.4,
               "enabled": true,
               "url": "bg/s4.jpg",
               "mode": "fill"
             },
-            "#0A0A0BA0",
+            "#0A0A0BB0",
             {
               "type": "gradient",
               "gradientType": "linear",
@@ -21320,7 +19929,7 @@
                   "type": "frame",
                   "id": "lEiwV",
                   "width": "fill_container",
-                  "height": "fill_container"
+                  "height": 360
                 },
                 {
                   "type": "frame",
@@ -21468,7 +20077,7 @@
                   "type": "frame",
                   "id": "axTGb",
                   "width": "fill_container",
-                  "height": 36
+                  "height": "fill_container"
                 },
                 {
                   "type": "frame",
@@ -21502,30 +20111,13 @@
           "width": 375,
           "height": 812,
           "fill": [
-            "$surface",
             {
-              "type": "gradient",
-              "gradientType": "radial",
+              "type": "image",
               "enabled": true,
-              "rotation": 0,
-              "size": {
-                "width": 1.2,
-                "height": 0.7
-              },
-              "colors": [
-                {
-                  "color": "#E6FF0026",
-                  "position": 0
-                },
-                {
-                  "color": "#E6FF0000",
-                  "position": 1
-                }
-              ],
-              "center": {
-                "y": 0.15
-              }
+              "url": "bg/s5.jpg",
+              "mode": "fill"
             },
+            "#0A0A0B66",
             {
               "type": "gradient",
               "gradientType": "linear",
@@ -21536,12 +20128,16 @@
               },
               "colors": [
                 {
-                  "color": "#14141600",
-                  "position": 0.55
+                  "color": "#0A0A0B00",
+                  "position": 0
                 },
                 {
-                  "color": "#0A0A0BF5",
-                  "position": 1
+                  "color": "#0A0A0B40",
+                  "position": 0.42
+                },
+                {
+                  "color": "#0A0A0BE6",
+                  "position": 0.78
                 }
               ]
             }
@@ -21558,107 +20154,187 @@
             },
             {
               "type": "frame",
-              "id": "E8v0Rn",
-              "name": "content",
+              "id": "h4aO7",
               "width": "fill_container",
               "height": "fill_container",
               "layout": "vertical",
+              "gap": 24,
               "padding": [
                 56,
                 24,
-                28,
+                0,
                 24
               ],
+              "justifyContent": "space_between",
               "children": [
                 {
                   "type": "frame",
-                  "id": "agHO7",
+                  "id": "zHSsh",
                   "width": "fill_container",
                   "justifyContent": "space_between",
                   "alignItems": "center",
                   "children": [
                     {
                       "type": "frame",
-                      "id": "x6nJT",
-                      "width": 220,
-                      "height": 4,
-                      "gap": 6,
+                      "id": "gmacW",
+                      "gap": 10,
+                      "alignItems": "center",
                       "children": [
                         {
                           "type": "frame",
-                          "id": "eizmy",
-                          "width": "fill_container",
-                          "height": 3,
-                          "fill": "$accent",
-                          "cornerRadius": 2
+                          "id": "Ps9LI",
+                          "width": 30,
+                          "height": 30,
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "polygon",
+                              "polygonCount": 6,
+                              "cornerRadius": 4,
+                              "id": "hxM65",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "fill": "$accent",
+                              "width": 30,
+                              "height": 30
+                            },
+                            {
+                              "type": "path",
+                              "id": "S4X34h",
+                              "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "$on-accent",
+                              "width": 16,
+                              "height": 16
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "gg8Ur",
-                          "width": "fill_container",
-                          "height": 3,
-                          "fill": "$accent",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "lEoPe",
-                          "width": "fill_container",
-                          "height": 3,
-                          "fill": "$accent",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "FR9O9",
-                          "width": "fill_container",
-                          "height": 3,
-                          "fill": "$accent",
-                          "cornerRadius": 2
-                        },
-                        {
-                          "type": "frame",
-                          "id": "eRJBK",
-                          "width": "fill_container",
-                          "height": 3,
-                          "fill": "$accent",
-                          "cornerRadius": 2
+                          "id": "YKB9F",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "aQjBB",
+                              "fill": "$ink",
+                              "content": "Fit",
+                              "fontFamily": "$font",
+                              "fontSize": 19,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "AUdnw",
+                              "fill": "$moss",
+                              "content": "Lab",
+                              "fontFamily": "$font",
+                              "fontSize": 19,
+                              "fontWeight": "700"
+                            }
+                          ]
                         }
                       ]
                     },
                     {
-                      "type": "text",
-                      "id": "AxVU8",
-                      "fill": "$ink-muted",
-                      "fontFamily": "Inter",
-                      "fontSize": 13,
-                      "fontWeight": "500"
+                      "type": "frame",
+                      "id": "V7NpOA",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Qvv6a",
+                          "width": 120,
+                          "height": 4,
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "XkDLV",
+                              "width": "fill_container",
+                              "height": 3,
+                              "fill": "$accent",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "FvaWG",
+                              "width": "fill_container",
+                              "height": 3,
+                              "fill": "$accent",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "YPhSU",
+                              "width": "fill_container",
+                              "height": 3,
+                              "fill": "$accent",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "EBhSY",
+                              "width": "fill_container",
+                              "height": 3,
+                              "fill": "$accent",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Wd0Rm",
+                              "width": "fill_container",
+                              "height": 3,
+                              "fill": "$accent",
+                              "cornerRadius": 2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "m7u4Y2",
+                          "fill": "$ink-muted",
+                          "content": "Keç",
+                          "fontFamily": "$font",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "AgV7n",
-                  "width": "fill_container",
-                  "height": "fill_container"
-                },
-                {
-                  "type": "frame",
-                  "id": "gWYCG",
-                  "name": "textGroup",
+                  "id": "W4gn4",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 18,
+                  "gap": 16,
+                  "padding": [
+                    0,
+                    0,
+                    8,
+                    0
+                  ],
                   "children": [
                     {
                       "type": "frame",
-                      "id": "BXSR5",
-                      "fill": "#E6FF000F",
+                      "id": "gTEez",
+                      "fill": "$accent-soft",
                       "cornerRadius": 999,
                       "stroke": {
                         "thickness": 1,
-                        "fill": "#E6FF0040"
+                        "fill": "$accent"
                       },
+                      "gap": 6,
                       "padding": [
                         6,
                         12
@@ -21666,38 +20342,46 @@
                       "alignItems": "center",
                       "children": [
                         {
+                          "type": "icon_font",
+                          "id": "n9qYSy",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "rocket",
+                          "iconFontFamily": "lucide",
+                          "fill": "$accent"
+                        },
+                        {
                           "type": "text",
-                          "id": "lzR33",
+                          "id": "eeqGy",
                           "fill": "$accent",
                           "content": "HAZIRSAN?",
-                          "fontFamily": "Inter",
+                          "fontFamily": "$font",
                           "fontSize": 11,
                           "fontWeight": "700",
-                          "letterSpacing": 2.4
+                          "letterSpacing": 2
                         }
                       ]
                     },
                     {
                       "type": "text",
-                      "id": "a4nYy",
+                      "id": "iNRjk",
                       "fill": "$ink",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Pulsuz başla.",
                       "lineHeight": 1.05,
-                      "fontFamily": "Inter",
-                      "fontSize": 44,
+                      "fontFamily": "$font",
+                      "fontSize": 40,
                       "fontWeight": "800",
                       "letterSpacing": -0.8
                     },
                     {
                       "type": "frame",
-                      "id": "qAgwk",
-                      "alignItems": "center",
+                      "id": "MjJlg",
                       "children": [
                         {
                           "type": "frame",
-                          "id": "PCaBJ",
+                          "id": "Vi6K0",
                           "fill": "$accent",
                           "cornerRadius": 12,
                           "padding": [
@@ -21710,12 +20394,12 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "yOme6",
+                              "id": "CsZ1L",
                               "fill": "$on-accent",
                               "content": "Limit yox.",
                               "lineHeight": 1.05,
-                              "fontFamily": "Inter",
-                              "fontSize": 44,
+                              "fontFamily": "$font",
+                              "fontSize": 40,
                               "fontWeight": "800",
                               "letterSpacing": -0.8
                             }
@@ -21725,24 +20409,24 @@
                     },
                     {
                       "type": "text",
-                      "id": "AkKXU",
+                      "id": "nhsjB",
                       "fill": "$ink-muted",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "Heç bir ödəniş, heç bir gizli limit. Tamamilə pulsuz başla.",
+                      "content": "Heç bir ödəniş, heç bir gizli limit. İstədiyin vaxt ləğv et.",
                       "lineHeight": 1.45,
-                      "fontFamily": "Inter",
-                      "fontSize": 16,
+                      "fontFamily": "$font",
+                      "fontSize": 15,
                       "fontWeight": "500"
                     },
                     {
                       "type": "frame",
-                      "id": "I85bmC",
+                      "id": "YmCTN",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 8,
+                      "gap": 10,
                       "padding": [
-                        6,
+                        8,
                         0,
                         0,
                         0
@@ -21750,29 +20434,29 @@
                       "children": [
                         {
                           "type": "frame",
-                          "id": "klTvj",
+                          "id": "b6tUQ",
                           "width": "fill_container",
                           "gap": 10,
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "icon_font",
-                              "id": "t5MT2",
-                              "width": 14,
-                              "height": 14,
+                              "id": "l2dz3",
+                              "width": 16,
+                              "height": 16,
                               "iconFontName": "check",
                               "iconFontFamily": "lucide",
                               "fill": "$accent"
                             },
                             {
                               "type": "text",
-                              "id": "NiWFO",
+                              "id": "YPmmd",
                               "fill": "$ink",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Sənin idarəndə olan logger + super-set",
                               "lineHeight": 1.4,
-                              "fontFamily": "Inter",
+                              "fontFamily": "$font",
                               "fontSize": 14,
                               "fontWeight": "500"
                             }
@@ -21780,29 +20464,29 @@
                         },
                         {
                           "type": "frame",
-                          "id": "Ttr1C",
+                          "id": "H37RFE",
                           "width": "fill_container",
                           "gap": 10,
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "icon_font",
-                              "id": "uyq9b",
-                              "width": 14,
-                              "height": 14,
+                              "id": "gjg7s",
+                              "width": 16,
+                              "height": 16,
                               "iconFontName": "check",
                               "iconFontFamily": "lucide",
                               "fill": "$accent"
                             },
                             {
                               "type": "text",
-                              "id": "NnOU4",
+                              "id": "bHLw9",
                               "fill": "$ink",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "AZ yeməkləri, Ramazan, doğma dil",
                               "lineHeight": 1.4,
-                              "fontFamily": "Inter",
+                              "fontFamily": "$font",
                               "fontSize": 14,
                               "fontWeight": "500"
                             }
@@ -21810,29 +20494,29 @@
                         },
                         {
                           "type": "frame",
-                          "id": "xxuBs",
+                          "id": "SczHL",
                           "width": "fill_container",
                           "gap": 10,
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "icon_font",
-                              "id": "vokU6",
-                              "width": 14,
-                              "height": 14,
+                              "id": "LkxRW",
+                              "width": 16,
+                              "height": 16,
                               "iconFontName": "check",
                               "iconFontFamily": "lucide",
                               "fill": "$accent"
                             },
                             {
                               "type": "text",
-                              "id": "f7UPj",
+                              "id": "sTXk8",
                               "fill": "$ink",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Elmə söykənən hesablamalar",
                               "lineHeight": 1.4,
-                              "fontFamily": "Inter",
+                              "fontFamily": "$font",
                               "fontSize": 14,
                               "fontWeight": "500"
                             }
@@ -21841,54 +20525,67 @@
                       ]
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DifD9",
+              "width": "fill_container",
+              "fill": "#0A0A0BF2",
+              "cornerRadius": [
+                28,
+                28,
+                0,
+                0
+              ],
+              "stroke": {
+                "thickness": {
+                  "top": 1
                 },
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                24,
+                24,
+                28,
+                24
+              ],
+              "children": [
                 {
-                  "type": "frame",
-                  "id": "R80Xdw",
+                  "id": "cZrxu",
+                  "type": "ref",
+                  "ref": "nO5Fr",
                   "width": "fill_container",
-                  "height": 24
-                },
-                {
-                  "type": "frame",
-                  "id": "da47k",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "children": [
-                    {
-                      "id": "rueEN",
-                      "type": "ref",
-                      "ref": "nO5Fr",
-                      "width": "fill_container",
-                      "descendants": {
-                        "xGzBv": {
-                          "content": "Pulsuz başla"
-                        }
-                      }
-                    },
-                    {
-                      "id": "E7068",
-                      "type": "ref",
-                      "ref": "fpMvc",
-                      "width": "fill_container",
-                      "descendants": {
-                        "ASoOX": {
-                          "content": "Artıq hesabım var"
-                        }
-                      }
+                  "descendants": {
+                    "xGzBv": {
+                      "content": "Pulsuz başla"
                     }
-                  ]
+                  }
+                },
+                {
+                  "id": "CcBX6",
+                  "type": "ref",
+                  "ref": "fpMvc",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ASoOX": {
+                      "content": "Artıq hesabım var"
+                    }
+                  }
                 },
                 {
                   "type": "text",
-                  "id": "I16Zq",
+                  "id": "GE0FW",
                   "fill": "$text-tertiary",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "Davam edərək, AI-dəstəkli məsləhətlərin son qərarını sənin verdiyini qəbul edirsən.",
                   "lineHeight": 1.4,
                   "textAlign": "center",
-                  "fontFamily": "Inter",
+                  "fontFamily": "$font",
                   "fontSize": 10,
                   "fontWeight": "500"
                 }
@@ -21904,8 +20601,8 @@
       "x": 1830,
       "y": 9190,
       "name": "02f · Welcome · Animation Timing",
-      "width": 840,
-      "height": 880,
+      "width": 919,
+      "height": 1031,
       "fill": "$surface",
       "layout": "vertical",
       "gap": 20,
@@ -23832,8 +22529,8 @@
     {
       "type": "frame",
       "id": "C6Ya4A",
-      "x": -3390,
-      "y": 6120,
+      "x": -4757,
+      "y": 6138,
       "name": "22 · Trimester / Postpartum",
       "clip": true,
       "width": 375,
@@ -24323,8 +23020,8 @@
     {
       "type": "frame",
       "id": "o0BUd",
-      "x": -2970,
-      "y": 6120,
+      "x": -4337,
+      "y": 6138,
       "name": "23 · Safe 4-week Plan",
       "clip": true,
       "width": 375,
@@ -25075,8 +23772,8 @@
     {
       "type": "frame",
       "id": "QHsnW",
-      "x": -2550,
-      "y": 6120,
+      "x": -3917,
+      "y": 6138,
       "name": "24 · Today’s Safe Workout",
       "clip": true,
       "width": 375,
@@ -25981,8 +24678,8 @@
     {
       "type": "frame",
       "id": "YZ38M",
-      "x": -2130,
-      "y": 6120,
+      "x": -3497,
+      "y": 6138,
       "name": "25 · Exercise Detail (Pregnancy)",
       "clip": true,
       "width": 375,
@@ -26652,8 +25349,8 @@
     {
       "type": "frame",
       "id": "vUAuh",
-      "x": -1710,
-      "y": 6120,
+      "x": -3077,
+      "y": 6138,
       "name": "26 · Settings · Pregnancy Mode",
       "clip": true,
       "width": 375,
@@ -27449,8 +26146,8 @@
       "type": "rectangle",
       "cornerRadius": 32,
       "id": "ms5Yh",
-      "x": -4290,
-      "y": 5760,
+      "x": -5657,
+      "y": 5778,
       "name": "PREGNANCY-FLOW · Boundary",
       "fill": "#E6FF0008",
       "width": 3060,
@@ -27463,8 +26160,8 @@
     {
       "type": "frame",
       "id": "D7SJ5",
-      "x": -4266,
-      "y": 5736,
+      "x": -5633,
+      "y": 5754,
       "name": "PREGNANCY-FLOW · Corner Badge",
       "fill": "$accent",
       "cornerRadius": 999,
@@ -27503,8 +26200,8 @@
     {
       "type": "frame",
       "id": "bMihu",
-      "x": -4230,
-      "y": 5830,
+      "x": -5597,
+      "y": 5848,
       "name": "PREGNANCY-FLOW · Title",
       "width": 2950,
       "height": 200,
@@ -28347,12 +27044,12 @@
       "type": "rectangle",
       "cornerRadius": 32,
       "id": "V7Bmi5",
-      "x": -960,
-      "y": 5760,
+      "x": -936,
+      "y": 5762,
       "name": "ONBOARDING-FLOW · Boundary",
       "fill": "#E6FF0008",
-      "width": 3960,
-      "height": 4650,
+      "width": 4366,
+      "height": 4676,
       "stroke": {
         "thickness": 4,
         "fill": "$accent"
@@ -29429,46 +28126,6 @@
     },
     {
       "type": "frame",
-      "id": "xYZWV",
-      "x": 420,
-      "y": 6952,
-      "name": "ONBOARDING-FLOW · xref to Welcome Cycle",
-      "fill": "$surface",
-      "cornerRadius": 999,
-      "stroke": {
-        "thickness": 1,
-        "fill": "$accent"
-      },
-      "gap": 6,
-      "padding": [
-        5,
-        10
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "x2Hzi6",
-          "width": 11,
-          "height": 11,
-          "iconFontName": "refresh-ccw",
-          "iconFontFamily": "lucide",
-          "fill": "$accent"
-        },
-        {
-          "type": "text",
-          "id": "urrLv",
-          "fill": "$ink",
-          "content": "↓ welcome cycle (içəridə)",
-          "fontFamily": "Inter",
-          "fontSize": 10,
-          "fontWeight": "700",
-          "letterSpacing": 0.3
-        }
-      ]
-    },
-    {
-      "type": "frame",
       "id": "p4DBU",
       "x": -686,
       "y": 8806,
@@ -30528,8 +29185,8 @@
     {
       "type": "frame",
       "id": "ql4r5",
-      "x": -3361,
-      "y": 6578,
+      "x": -4728,
+      "y": 6596,
       "name": "PREGNANCY-FLOW · xref to User Data",
       "fill": "$bg",
       "cornerRadius": 999,
@@ -30569,8 +29226,8 @@
       "type": "rectangle",
       "cornerRadius": 32,
       "id": "xs2mK",
-      "x": 3391,
-      "y": 5780,
+      "x": 4285,
+      "y": 5796,
       "name": "USER-DATA · Boundary",
       "fill": "#E6FF0008",
       "width": 3480,
@@ -30613,8 +29270,8 @@
     {
       "type": "frame",
       "id": "R9let2",
-      "x": 3451,
-      "y": 5800,
+      "x": 4345,
+      "y": 5816,
       "name": "USER-DATA · Super-Title",
       "width": 3360,
       "height": 130,
@@ -30796,8 +29453,8 @@
     {
       "type": "frame",
       "id": "BCj7C",
-      "x": 3451,
-      "y": 6000,
+      "x": 4345,
+      "y": 6016,
       "name": "USER-DATA · Sub: Onboarding Sualı",
       "width": 3360,
       "height": 240,
@@ -31336,8 +29993,8 @@
     {
       "type": "frame",
       "id": "wdOOF",
-      "x": 3451,
-      "y": 7180,
+      "x": 4345,
+      "y": 7196,
       "name": "USER-DATA · Reserved for next data-flows",
       "width": 3360,
       "height": 1191,
@@ -33119,8 +31776,8 @@
     {
       "type": "text",
       "id": "yLGMk",
-      "x": 3446,
-      "y": 5746,
+      "x": 4340,
+      "y": 5762,
       "fill": "$on-accent",
       "content": "USER DATA · MƏLUMAT TOPLAMA",
       "fontFamily": "Inter",
@@ -33131,8 +31788,8 @@
     {
       "type": "frame",
       "id": "SCKUA",
-      "x": -7492,
-      "y": 6687,
+      "x": -8601,
+      "y": 6669,
       "name": "23 · Çıxış Təsdiq",
       "clip": true,
       "width": 375,
@@ -33456,8 +32113,8 @@
     {
       "type": "frame",
       "id": "RACEH",
-      "x": -8332,
-      "y": 5838,
+      "x": -9441,
+      "y": 5820,
       "name": "POST-AUTH-FLOW · Title Block",
       "width": 2480,
       "fill": "#00000000",
@@ -34071,8 +32728,8 @@
     {
       "type": "frame",
       "id": "FFxxl",
-      "x": -5797,
-      "y": 6487,
+      "x": -6906,
+      "y": 6469,
       "name": "POST-AUTH-FLOW · Right Annotations",
       "width": 900,
       "fill": "#00000000",
@@ -34552,8 +33209,8 @@
     {
       "type": "frame",
       "id": "hdmIK",
-      "x": -7912,
-      "y": 7638,
+      "x": -9021,
+      "y": 7620,
       "name": "POST-AUTH-FLOW · Flow Bridge",
       "width": 2055,
       "height": 180,
@@ -34945,8 +33602,8 @@
       "type": "rectangle",
       "cornerRadius": 32,
       "id": "D76JCX",
-      "x": -8407,
-      "y": 5778,
+      "x": -9516,
+      "y": 5760,
       "name": "POST-AUTH-FLOW · Boundary",
       "fill": "#E6FF0008",
       "width": 3550,
@@ -34959,8 +33616,8 @@
     {
       "type": "frame",
       "id": "mmMdY",
-      "x": -8383,
-      "y": 5754,
+      "x": -9492,
+      "y": 5736,
       "name": "POST-AUTH-FLOW · Corner Badge",
       "fill": "$accent",
       "cornerRadius": 999,
@@ -34999,8 +33656,8 @@
     {
       "type": "frame",
       "id": "k3VWz",
-      "x": -7912,
-      "y": 6623,
+      "x": -9021,
+      "y": 6605,
       "name": "POST-AUTH-FLOW · xref Dashboard incoming",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -35039,8 +33696,8 @@
     {
       "type": "frame",
       "id": "pht5j",
-      "x": -7072,
-      "y": 6623,
+      "x": -8181,
+      "y": 6605,
       "name": "POST-AUTH-FLOW · xref Settings outgoing",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -35079,8 +33736,8 @@
     {
       "type": "frame",
       "id": "M89cTO",
-      "x": -6232,
-      "y": 6623,
+      "x": -7341,
+      "y": 6605,
       "name": "POST-AUTH-FLOW · xref Faza 2",
       "fill": "$surface",
       "cornerRadius": 999,
@@ -35113,6 +33770,792 @@
           "fontSize": 10,
           "fontWeight": "700",
           "letterSpacing": 0.3
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "H7ARL",
+      "x": 670,
+      "y": 10002,
+      "width": 780,
+      "height": 299,
+      "content": "Welcome cycle (oeVgP) — yalnız ilk açılışda göstərilir. Hər iki CTA → 14 · AuthGate (K1n7u5). Returning user (onboarding tamamlanıb) Splash → birbaşa K1n7u5-ə yönlənir, welcome skip."
+    },
+    {
+      "type": "frame",
+      "id": "xlfL2",
+      "x": 3,
+      "y": 7141,
+      "name": "14 · AuthGate v2",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": [
+        {
+          "type": "image",
+          "opacity": 0.85,
+          "enabled": true,
+          "url": "bg/s6.jpg",
+          "mode": "fill"
+        },
+        "#0A0A0BB3",
+        {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 180,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#0A0A0B00",
+              "position": 0
+            },
+            {
+              "color": "#0A0A0B66",
+              "position": 0.35
+            },
+            {
+              "color": "#0A0A0BF7",
+              "position": 0.7
+            }
+          ]
+        }
+      ],
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "R3Ejc",
+          "type": "ref",
+          "ref": "Y01Sc"
+        },
+        {
+          "type": "frame",
+          "id": "X0MPm",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            28,
+            28,
+            0,
+            28
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pIQS0",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n8BdR",
+                  "width": 30,
+                  "height": 30,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "polygon",
+                      "polygonCount": 6,
+                      "cornerRadius": 4,
+                      "id": "KD607",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "fill": "$accent",
+                      "width": 30,
+                      "height": 30
+                    },
+                    {
+                      "type": "path",
+                      "id": "z8LIs",
+                      "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
+                      "viewBox": [
+                        0,
+                        0,
+                        24,
+                        24
+                      ],
+                      "fill": "$on-accent",
+                      "width": 16,
+                      "height": 16
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qiVQ5",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sKVMU",
+                      "fill": "$ink",
+                      "content": "Fit",
+                      "fontFamily": "$font",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "k06xIk",
+                      "fill": "$moss",
+                      "content": "Lab",
+                      "fontFamily": "$font",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YksEN",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                0,
+                0,
+                8,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UFWrj",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 999,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$accent"
+                  },
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "LyKQV",
+                      "width": 12,
+                      "height": 12,
+                      "iconFontName": "sparkles",
+                      "iconFontFamily": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "j8eI0d",
+                      "fill": "$accent",
+                      "content": "Buludda təhlükəsiz qalsın",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "r0CKFL",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Hesabını yarat",
+                  "lineHeight": 1.08,
+                  "fontFamily": "$font",
+                  "fontSize": 34,
+                  "fontWeight": "800",
+                  "letterSpacing": -0.6
+                },
+                {
+                  "type": "text",
+                  "id": "kmHem",
+                  "fill": "$ink-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "İrəliləyişin sənlə qalsın — yeni cihazda da kaldığın yerdən davam et.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "$font",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wmDEU",
+          "width": "fill_container",
+          "fill": "#0A0A0BF2",
+          "cornerRadius": [
+            28,
+            28,
+            0,
+            0
+          ],
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            24,
+            28,
+            24
+          ],
+          "children": [
+            {
+              "id": "WFgSt",
+              "type": "ref",
+              "ref": "nO5Fr",
+              "width": "fill_container",
+              "descendants": {
+                "xGzBv": {
+                  "content": "Email ilə davam et"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "i7Q5oU",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tVzay",
+                  "width": "fill_container",
+                  "height": 56,
+                  "fill": "#000000",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-strong"
+                  },
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "iAZbh",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "apple",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "V7mi2K",
+                      "fill": "#FFFFFF",
+                      "content": "Apple",
+                      "fontFamily": "$font",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LC7CC",
+                  "width": "fill_container",
+                  "height": 56,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-strong"
+                  },
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FTxtb",
+                      "width": 18,
+                      "height": 18,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 9,
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "o9qXI",
+                          "fill": "#0E0E0E",
+                          "content": "G",
+                          "fontFamily": "$font",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "kSBD1",
+                      "fill": "$ink",
+                      "content": "Google",
+                      "fontFamily": "$font",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "t91G6",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                6,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MqNOq",
+                  "fill": "$text-tertiary",
+                  "content": "Davam edərək qəbul edirsən",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "s78gFQ",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "B8Gkx",
+                      "fill": "$ink",
+                      "content": "Şərtlər",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iuAlK",
+                      "fill": "$text-tertiary",
+                      "content": "və",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Wb8h1",
+                      "fill": "$ink",
+                      "content": "Məxfilik Siyasəti",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Fl60t",
+      "x": 3,
+      "y": 6136,
+      "name": "14b · AuthGate · Return",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": [
+        {
+          "type": "image",
+          "enabled": true,
+          "url": "bg/s5.jpg",
+          "mode": "fill"
+        },
+        "#0A0A0B66",
+        {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 180,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#0A0A0B00",
+              "position": 0
+            },
+            {
+              "color": "#0A0A0B40",
+              "position": 0.4
+            },
+            {
+              "color": "#0A0A0BE6",
+              "position": 0.78
+            }
+          ]
+        }
+      ],
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "R511vt",
+          "type": "ref",
+          "ref": "Y01Sc"
+        },
+        {
+          "type": "frame",
+          "id": "ABfNt",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            28,
+            28,
+            0,
+            28
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "W0eaPA",
+              "width": "fill_container",
+              "gap": 10,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BehpD",
+                  "name": "brand",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "JBHP8",
+                      "width": 30,
+                      "height": 30,
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "cornerRadius": 4,
+                          "id": "Vi7oB",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 0,
+                          "fill": "$accent",
+                          "width": 30,
+                          "height": 30
+                        },
+                        {
+                          "type": "path",
+                          "id": "NQfdm",
+                          "geometry": "M2 8h2.5v8h-2.5z m3.5-3h3.5v14h-3.5z m3.5 6h6v2h-6z m6-6h3.5v14h-3.5z m4.5 3h2.5v8h-2.5z",
+                          "viewBox": [
+                            0,
+                            0,
+                            24,
+                            24
+                          ],
+                          "fill": "$on-accent",
+                          "width": 16,
+                          "height": 16
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zPhNb",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "s1BqF",
+                          "fill": "$ink",
+                          "content": "Fit",
+                          "fontFamily": "$font",
+                          "fontSize": 19,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vA0Fh",
+                          "fill": "$moss",
+                          "content": "Lab",
+                          "fontFamily": "$font",
+                          "fontSize": 19,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a5Y8ay",
+                  "name": "btn-clear-selection",
+                  "fill": "$danger-soft",
+                  "cornerRadius": 999,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$danger"
+                  },
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "aNUr3",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "trash-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$danger"
+                    },
+                    {
+                      "type": "text",
+                      "id": "V5P0s7",
+                      "fill": "$danger",
+                      "content": "Seçimi sil",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n4JTn",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                0,
+                0,
+                8,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qPOjp",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 999,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$accent"
+                  },
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Q5iD3",
+                      "width": 12,
+                      "height": 12,
+                      "iconFontName": "arrow-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "L37ohC",
+                      "fill": "$accent",
+                      "content": "Tək addım qaldı",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "AyVZZ",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Hazırsan?",
+                  "lineHeight": 1.08,
+                  "fontFamily": "$font",
+                  "fontSize": 34,
+                  "fontWeight": "800",
+                  "letterSpacing": -0.6
+                },
+                {
+                  "type": "text",
+                  "id": "jm5gN",
+                  "fill": "$ink-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Pulsuz başla — istənilən vaxt ləğv et. Daxili limit yox, gizli ödəniş yox.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "$font",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v0KyDm",
+          "width": "fill_container",
+          "fill": "#0A0A0BF2",
+          "cornerRadius": [
+            28,
+            28,
+            0,
+            0
+          ],
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            24,
+            28,
+            24
+          ],
+          "children": [
+            {
+              "id": "BMfck",
+              "type": "ref",
+              "ref": "nO5Fr",
+              "width": "fill_container",
+              "descendants": {
+                "xGzBv": {
+                  "content": "Yeni qeydiyyat"
+                }
+              }
+            },
+            {
+              "id": "hTiLw",
+              "type": "ref",
+              "ref": "fpMvc",
+              "width": "fill_container",
+              "descendants": {
+                "ASoOX": {
+                  "content": "Artıq hesabım var"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "dAodH",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                6,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "p9dQtn",
+                  "fill": "$text-tertiary",
+                  "content": "Davam edərək qəbul edirsən",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "otDDz",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ONYCG",
+                      "fill": "$ink",
+                      "content": "Şərtlər",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZKbjS",
+                      "fill": "$text-tertiary",
+                      "content": "və",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "m12Ih",
+                      "fill": "$ink",
+                      "content": "Məxfilik Siyasəti",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

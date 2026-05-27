@@ -1,5 +1,14 @@
 package org.betech.fitnes.presentation.onboarding.welcome
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,6 +29,7 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -43,14 +53,13 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kotlin.math.abs
 import kotlinx.coroutines.delay
 import org.betech.fitnes.designsystem.color.VoltColors
 import org.betech.fitnes.presentation.onboarding.languageselect.LanguageSelectScreen
@@ -105,12 +114,13 @@ class WelcomeScreen : Screen {
 
 private data class WelcomePage(
     val bg: DrawableResource,
+    val bgImageAlpha: Float = 0.40f,
+    val darkOverlayAlpha: Float = 0.69f,
     val eyebrow: String,
     val headlinePlain: String,
     val headlinePill: String,
     val supporting: String,
     val microProof: String? = null,
-    val microProofIsMoss: Boolean = false,
     val chipIcons: List<String> = emptyList(),
     val bullets: List<String> = emptyList(),
     val usesMossAccent: Boolean = false,
@@ -129,6 +139,7 @@ private val WelcomePages = listOf(
     ),
     WelcomePage(
         bg = Res.drawable.s2,
+        bgImageAlpha = 0.38f,
         eyebrow = "ELMƏ SÖYKƏNİR",
         headlinePlain = "Təxmin yox.",
         headlinePill = "Hesab var.",
@@ -137,6 +148,7 @@ private val WelcomePages = listOf(
     ),
     WelcomePage(
         bg = Res.drawable.s3,
+        bgImageAlpha = 0.42f,
         eyebrow = "QƏHRƏMAN SƏNSƏN",
         headlinePlain = "AI təklif edir.",
         headlinePill = "Qərar sənin.",
@@ -154,6 +166,8 @@ private val WelcomePages = listOf(
     ),
     WelcomePage(
         bg = Res.drawable.s5,
+        bgImageAlpha = 1.0f,
+        darkOverlayAlpha = 0.40f,
         eyebrow = "HAZIRSAN?",
         headlinePlain = "Pulsuz başla.",
         headlinePill = "Limit yox.",
@@ -171,7 +185,7 @@ private val WelcomePages = listOf(
 
 @Composable
 private fun WelcomeContent(
-    pagerState: androidx.compose.foundation.pager.PagerState,
+    pagerState: PagerState,
     currentPage: Int,
     onSkip: () -> Unit,
     onPrimary: () -> Unit,
@@ -187,27 +201,47 @@ private fun WelcomeContent(
             modifier = Modifier.fillMaxSize(),
         ) { pageIndex ->
             val page = WelcomePages[pageIndex]
-            val settled = pagerState.currentPage == pageIndex &&
-                abs(pagerState.currentPageOffsetFraction) < 0.05f
-            WelcomePageView(
+            val isActive = pagerState.currentPage == pageIndex
+            WelcomePageBody(
                 page = page,
-                pageIndex = pageIndex,
-                isActive = settled,
-                onSkip = onSkip,
-                onPrimary = onPrimary,
+                isActive = isActive,
                 onSecondary = onSecondary,
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.TopCenter)
+                .windowInsetsPadding(WindowInsets.systemBars)
+                .padding(start = 24.dp, end = 24.dp, top = 16.dp),
+        ) {
+            TopBar(
+                pageIndex = currentPage,
+                showSkip = currentPage < WELCOME_PAGE_COUNT - 1,
+                onSkip = onSkip,
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .windowInsetsPadding(WindowInsets.systemBars)
+                .padding(start = 24.dp, end = 24.dp, bottom = 28.dp),
+        ) {
+            PrimaryCtaSwap(
+                currentPage = currentPage,
+                onPrimary = onPrimary,
             )
         }
     }
 }
 
 @Composable
-private fun WelcomePageView(
+private fun WelcomePageBody(
     page: WelcomePage,
-    pageIndex: Int,
     isActive: Boolean,
-    onSkip: () -> Unit,
-    onPrimary: () -> Unit,
     onSecondary: () -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -217,12 +251,12 @@ private fun WelcomePageView(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .graphicsLayer { alpha = 0.40f },
+                .graphicsLayer { alpha = page.bgImageAlpha },
         )
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(VoltColors.surface0.copy(alpha = 0.69f)),
+                .background(VoltColors.surface0.copy(alpha = page.darkOverlayAlpha)),
         )
         Box(
             modifier = Modifier
@@ -233,8 +267,6 @@ private fun WelcomePageView(
                             Color.Transparent,
                             VoltColors.surface0.copy(alpha = 0.95f),
                         ),
-                        startY = 0f,
-                        endY = Float.POSITIVE_INFINITY,
                     ),
                 ),
         )
@@ -243,31 +275,14 @@ private fun WelcomePageView(
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.systemBars)
-                .padding(start = 24.dp, end = 24.dp, top = 12.dp, bottom = 28.dp),
+                .padding(start = 24.dp, end = 24.dp, top = 76.dp, bottom = 116.dp),
+            verticalArrangement = Arrangement.Bottom,
         ) {
-            TopBar(
-                pageIndex = pageIndex,
-                showSkip = pageIndex < WELCOME_PAGE_COUNT - 1,
-                onSkip = onSkip,
-            )
-            Spacer(Modifier.weight(1f))
-            HeroText(page = page, isActive = isActive)
-            Spacer(Modifier.height(32.dp))
-            CtaStack(
+            HeroText(
                 page = page,
                 isActive = isActive,
-                onPrimary = onPrimary,
                 onSecondary = onSecondary,
             )
-            page.disclaimer?.let { msg ->
-                Spacer(Modifier.height(12.dp))
-                Text(
-                    text = msg,
-                    style = TextStyle(fontSize = 10.sp, lineHeight = 14.sp),
-                    color = VoltColors.onSurfaceMuted.copy(alpha = 0.6f),
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
         }
     }
 }
@@ -275,7 +290,7 @@ private fun WelcomePageView(
 @Composable
 private fun TopBar(pageIndex: Int, showSkip: Boolean, onSkip: () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -307,26 +322,37 @@ private fun ProgressBar(current: Int, total: Int, modifier: Modifier = Modifier)
         horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         repeat(total) { i ->
+            val target = if (i <= current) VoltColors.volt
+            else VoltColors.onSurface.copy(alpha = 0.12f)
+            val animatedColor by animateColorAsState(
+                targetValue = target,
+                animationSpec = tween(durationMillis = 320, easing = FastOutSlowInEasing),
+                label = "progressSegment$i",
+            )
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(4.dp)
+                    .height(3.dp)
                     .clip(RoundedCornerShape(2.dp))
-                    .background(
-                        if (i <= current) VoltColors.volt
-                        else VoltColors.onSurface.copy(alpha = 0.12f),
-                    ),
+                    .background(animatedColor),
             )
         }
     }
 }
 
 @Composable
-private fun HeroText(page: WelcomePage, isActive: Boolean) {
+private fun HeroText(
+    page: WelcomePage,
+    isActive: Boolean,
+    onSecondary: () -> Unit,
+) {
     val accent = if (page.usesMossAccent) VoltColors.moss else VoltColors.volt
-    val pillTextColor = if (page.usesMossAccent) VoltColors.onVolt else VoltColors.onVolt
-
+    val pillTextColor = VoltColors.onVolt
     var headlineDone by remember(page) { mutableStateOf(false) }
+
+    LaunchedEffect(page, isActive) {
+        if (!isActive) headlineDone = false
+    }
 
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -347,14 +373,14 @@ private fun HeroText(page: WelcomePage, isActive: Boolean) {
             ),
             color = VoltColors.onSurface,
             cursorColor = accent,
-            charDelayMs = 38,
-            startDelayMs = 120,
+            charDelayMs = 45L,
+            startDelayMs = 120L,
             onFinished = { headlineDone = true },
         )
-        FadeSlideIn(visible = isActive && headlineDone, delayMs = 80) {
+        FadeSlideIn(visible = isActive && headlineDone, delayMs = 60) {
             HeadlinePill(text = page.headlinePill, fill = accent, textColor = pillTextColor)
         }
-        FadeSlideIn(visible = isActive && headlineDone, delayMs = 250) {
+        FadeSlideIn(visible = isActive && headlineDone, delayMs = 180) {
             Text(
                 text = page.supporting,
                 modifier = Modifier.fillMaxWidth(),
@@ -363,20 +389,44 @@ private fun HeroText(page: WelcomePage, isActive: Boolean) {
             )
         }
         page.microProof?.let { proof ->
-            FadeSlideIn(visible = isActive && headlineDone, delayMs = 430) {
+            FadeSlideIn(visible = isActive && headlineDone, delayMs = 300) {
                 MicroProofChip(text = proof, useMoss = page.usesMossAccent)
             }
         }
         if (page.chipIcons.isNotEmpty()) {
-            FadeSlideIn(visible = isActive && headlineDone, delayMs = 430) {
+            FadeSlideIn(visible = isActive && headlineDone, delayMs = 300) {
                 ChipRow(labels = page.chipIcons, accent = accent)
             }
         }
         if (page.bullets.isNotEmpty()) {
-            FadeSlideIn(visible = isActive && headlineDone, delayMs = 430) {
+            FadeSlideIn(visible = isActive && headlineDone, delayMs = 300) {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     page.bullets.forEach { line ->
                         BulletRow(text = line, accent = accent)
+                    }
+                }
+            }
+        }
+        page.secondaryCta?.let { sec ->
+            FadeSlideIn(visible = isActive && headlineDone, delayMs = 380) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp),
+                ) {
+                    SecondaryCta(text = sec, onClick = onSecondary)
+                    page.disclaimer?.let { d ->
+                        Text(
+                            text = d,
+                            style = TextStyle(
+                                fontSize = 10.sp,
+                                lineHeight = 14.sp,
+                                textAlign = TextAlign.Center,
+                            ),
+                            color = VoltColors.onSurfaceMuted.copy(alpha = 0.6f),
+                            modifier = Modifier.fillMaxWidth(),
+                        )
                     }
                 }
             }
@@ -513,22 +563,17 @@ private fun BulletRow(text: String, accent: Color) {
 }
 
 @Composable
-private fun CtaStack(
-    page: WelcomePage,
-    isActive: Boolean,
-    onPrimary: () -> Unit,
-    onSecondary: () -> Unit,
-) {
-    FadeSlideIn(visible = isActive, delayMs = 600) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            PrimaryCta(text = page.primaryCta, onClick = onPrimary)
-            page.secondaryCta?.let { sec ->
-                SecondaryCta(text = sec, onClick = onSecondary)
-            }
-        }
+private fun PrimaryCtaSwap(currentPage: Int, onPrimary: () -> Unit) {
+    val label = WelcomePages[currentPage].primaryCta
+    AnimatedContent(
+        targetState = label,
+        transitionSpec = {
+            (fadeIn(tween(220, delayMillis = 60)) togetherWith fadeOut(tween(160)))
+                .using(SizeTransform(clip = false))
+        },
+        label = "primaryCta",
+    ) { currentLabel ->
+        PrimaryCta(text = currentLabel, onClick = onPrimary)
     }
 }
 
@@ -584,16 +629,13 @@ private fun TypewriterText(
     startDelayMs: Long,
     onFinished: () -> Unit,
 ) {
-    var charCount by remember(text, isActive) { mutableIntStateOf(0) }
+    var charCount by remember(text) { mutableIntStateOf(0) }
     val visible by remember(text) { derivedStateOf { text.take(charCount) } }
     val done = charCount >= text.length
 
     LaunchedEffect(text, isActive) {
-        if (!isActive) {
-            charCount = 0
-            return@LaunchedEffect
-        }
         charCount = 0
+        if (!isActive) return@LaunchedEffect
         delay(startDelayMs)
         text.indices.forEach { i ->
             delay(charDelayMs)
@@ -643,18 +685,18 @@ private fun FadeSlideIn(
         delay(delayMs.toLong())
         shown = true
     }
-    val progress = androidx.compose.animation.core.animateFloatAsState(
+    val progress by animateFloatAsState(
         targetValue = if (shown) 1f else 0f,
-        animationSpec = androidx.compose.animation.core.tween(
-            durationMillis = 420,
-            easing = androidx.compose.animation.core.FastOutSlowInEasing,
+        animationSpec = tween(
+            durationMillis = 220,
+            easing = FastOutSlowInEasing,
         ),
         label = "fadeSlideProgress",
     )
     Box(
         modifier = Modifier.graphicsLayer {
-            alpha = progress.value
-            translationY = (1f - progress.value) * 16.dp.toPx()
+            alpha = progress
+            translationY = (1f - progress) * 14.dp.toPx()
         },
     ) { content() }
 }
