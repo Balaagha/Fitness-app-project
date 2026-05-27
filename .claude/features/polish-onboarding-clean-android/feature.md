@@ -84,25 +84,25 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 - **Status:** complete (2026-05-28). Only RateLimit needed a code change (scrim token unification); other 9 screens were already structurally clean from predecessor pass and check off without commits.
 
 ### Phase 4: Q-Screens + Onboarding Spine Clean Pass
-- [ ] Splash (s7yM8w): 1.4s delay → LanguageSelect nav, Canvas hexagon, no static asset
-- [ ] LanguageSelect (X2Pu6z): 3 options + INFO native-translation notice + persist preferredLanguage
-- [ ] Welcome BPoym (main): 1:1 with 168/132/96 emblem + ELM İLƏ eyebrow
-- [ ] Welcome tneyd (soft): 196/154/112 emblem + breadcrumb row + pillar row + Science pillar
-- [ ] Welcome dRTLR (qida): apple glyph + İZLƏ eyebrow + science claim subtitle
-- [ ] Welcome gjmPD (enerji): zap glyph + ÖLÇ eyebrow + science claim subtitle
-- [ ] Welcome OKg7W (hədəf): target glyph + ÇAT eyebrow + science claim subtitle
-- [ ] AiDisclosure (eQcvv): Apple 2025 mandatory disclosure + 4 user-agency bullets + "mütəxəssis uyğunluq yoxlaması" term — COPY MUST NOT CHANGE
-- [ ] Q1 Goal (S5QT23): 4-option QuestionScaffold, GoalChoice → GoalType mapping, analytics + SingleChoice answer
-- [ ] Q2 Sex (ObxuP): 3 UI options, binary domain Sex enum + null for prefer-not-to-say
-- [ ] Q3 Age (owS2i): stepper + slider + keyboard tap-dialog
-- [ ] Q3 Age SoftWarning (iNSs8): out-of-range branch from Q3 — wire from current TODO marker
-- [ ] Q4 HeightWeight (qXLw8): dual measurement card with cm↔ft, kg↔lb, internal storage metric
-- [ ] Q5 Experience (i1Vu9): 4 options Beginner..Athlete (ATHLETE 4th-value preserved)
-- [ ] Q6 Context (F16e8): 4 UI options → 3 schema values mapping
-- [ ] Q7 DaySession (H0uZ0e): 2 segmented rows (days 3-7, mins 20-60), dynamic summary chip
-- [ ] ProfileSummary (u1cEVR): 7 review rows, edit affordance, "Profilimi yarat" CTA persists UserProfile
-- [ ] Paywall (ij7jR): 2-option layout invariant (trial + annual), payment-badge row (Apple/Google/m10/Pulpal), transparent billing notice
-- **Status:** pending
+- [x] Splash (s7yM8w): 1.4s delay → LanguageSelect nav, Canvas hexagon, no static asset — clean (zero issues)
+- [x] LanguageSelect (X2Pu6z): 3 options + INFO native-translation notice + persist preferredLanguage — `ShowError` side effect wired to `SnackbarHost` (was silent `Unit` TODO)
+- [x] Welcome BPoym (main): 1:1 with 168/132/96 emblem + ELM İLƏ eyebrow — clean
+- [x] Welcome tneyd (soft): 196/154/112 emblem + breadcrumb row + pillar row + Science pillar — clean
+- [x] Welcome dRTLR (qida): apple glyph + İZLƏ eyebrow + science claim subtitle — clean
+- [x] Welcome gjmPD (enerji): zap glyph + ÖLÇ eyebrow + science claim subtitle — clean
+- [x] Welcome OKg7W (hədəf): target glyph + ÇAT eyebrow + science claim subtitle — clean
+- [x] AiDisclosure (eQcvv): Apple 2025 mandatory disclosure + 4 user-agency bullets + "mütəxəssis uyğunluq yoxlaması" term — COPY MUST NOT CHANGE — clean (banned-term grep hit is the KDoc warning, intentional)
+- [x] Q1 Goal (S5QT23): 4-option QuestionScaffold, GoalChoice → GoalType mapping, analytics + SingleChoice answer — TODO comment demoted to KDoc note (`polish(q1goal)`)
+- [x] Q2 Sex (ObxuP): 3 UI options, binary domain Sex enum + null for prefer-not-to-say — clean
+- [x] Q3 Age (owS2i): stepper + slider + keyboard tap-dialog — soft-warning routing now wired in VM (Q3AgeState.SOFT_MIN_AGE/SOFT_MAX_AGE; `polish(q3age)`)
+- [x] Q3 Age SoftWarning (iNSs8): out-of-range branch from Q3 — wire from current TODO marker — wired; literal `13`/`90` slider labels promoted to `Q3AgeState.MIN_AGE/MAX_AGE` cross-file refs
+- [x] Q4 HeightWeight (qXLw8): dual measurement card with cm↔ft, kg↔lb, internal storage metric — clean
+- [x] Q5 Experience (i1Vu9): 4 options Beginner..Athlete (ATHLETE 4th-value preserved) — clean
+- [x] Q6 Context (F16e8): 4 UI options → 3 schema values mapping — 3 PRD-revision TODOs demoted to KDoc notes (`polish(q6context)`)
+- [x] Q7 DaySession (H0uZ0e): 2 segmented rows (days 3-7, mins 20-60), dynamic summary chip — clean
+- [x] ProfileSummary (u1cEVR): 7 review rows, edit affordance, "Profilimi yarat" CTA persists UserProfile — clean
+- [x] Paywall (ij7jR): 2-option layout invariant (trial + annual), payment-badge row (Apple/Google/m10/Pulpal), transparent billing notice — clean (banned-term grep hit is the KDoc warning, intentional)
+- **Status:** complete (2026-05-28). 14/18 screens audit-only (already clean). 4 screens needed code work (Q3Age soft-warning routing + Q3AgeSoftWarning literal hoist landed together; LanguageSelect snackbar; Q1Goal TODO demotion; Q6Context TODO demotion). 4 atomic commits.
 
 ### Phase 5: Pregnancy + Parental + Account Branch Clean Pass
 - [ ] PregnancyNudge (M52XdD): 64dp shield-check tile + 3 benefit rows + INFO privacy — NOT AI-trigger
@@ -270,6 +270,7 @@ KDoc coverage is broadly strong (all 15 design-system component files contain at
 - 2026-05-28 01:10 — **Phase 1 complete.** Audit findings written (7 sections: inventory, hardcode scan, TODO inventory, Volt↔Pencil parity, KDoc surface, mock-repo contract, observations). 0 in-scope user-visible string leaks; predecessor cleanup already ate the obvious ones. 2 silent hex drift bugs (danger, border-strong) + 6 missing tokens are the main Phase 2 fix list. Build baseline `:androidApp:assembleDebug -x test` green (43s, 0 problems).
 - 2026-05-28 01:35 — **Phase 2 complete.** VoltColors hex drifts fixed (danger, outlineStrong, onSurfaceMuted). 5 new color tokens added (voltPressed, voltSoft, onSurfaceFaint, mossDim, dangerSoft). `VoltRadius` object created mirroring Pencil's sm/md/lg radius variables. `QuestionScaffold` gained the missing `modifier` parameter; `QuestionProgressBar` gained per-composable KDoc; `VoltProgressBar`'s dead `total` parameter removed (+ callsite fix). Build green (23s, 0 problems).
 - 2026-05-28 01:55 — **Phase 3 complete.** Audit found 9/10 auth screens already structurally clean (no hardcoded strings, no banned terms, no legacy hex, no orphan TODOs); only RateLimit (IFSQ3) had a raw `Color(0xCC000000)` scrim hex which was promoted to a new `VoltColors.scrim` token (also future-ready for ParentalBottomSheet in Phase 5). Single commit `polish(ratelimit): unify scrim token`.
+- 2026-05-28 02:30 — **Phase 4 complete.** 14/18 spine screens already clean. 4 commits: `polish(q3age)` (soft-warning routing wired + Q3AgeSoftWarning literal hoist), `polish(languageselect)` (ShowError → SnackbarHost), `polish(q1goal)` (TODO → KDoc), `polish(q6context)` (3 TODOs → KDoc). Build green between every commit.
 
 
 ## Notes for Next Session
