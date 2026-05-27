@@ -59,15 +59,15 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 - **Status:** complete (2026-05-28)
 
 ### Phase 2: Design System Hardening
-- [ ] `mcp__pencil__get_variables` — pull full Pencil token table
-- [ ] Cross-check `VoltColors` hex values against Pencil; log mismatches into Decisions, fix afterwards
-- [ ] Cross-check `VoltType` size + weight scale against Pencil typography styles
-- [ ] Cross-check `VoltSpacing` 4/8/12/16/24/32/48 scale against Pencil paddings
-- [ ] Standardize reusable component APIs: `modifier: Modifier = Modifier` first, content lambdas last, KDoc on every public composable
-- [ ] Add KDoc to HexagonLogo, VoltOptionCard, VoltMeasurementCard, VoltSegmentedRow, QuestionScaffold — describe purpose + selection state contract + accepted parameter ranges
-- [ ] Run `./gradlew :androidApp:assembleDebug -x test` — must remain green
-- [ ] Commit: `polish(designsystem): KDoc + parameter-order standardization`
-- **Status:** pending
+- [x] `mcp__pencil__get_variables` — pull full Pencil token table
+- [x] Cross-check `VoltColors` hex values against Pencil; log mismatches into Decisions, fix afterwards
+- [x] Cross-check `VoltType` size + weight scale against Pencil typography styles
+- [x] Cross-check `VoltSpacing` 4/8/12/16/24/32/48 scale against Pencil paddings
+- [x] Standardize reusable component APIs: `modifier: Modifier = Modifier` first, content lambdas last, KDoc on every public composable
+- [x] Add KDoc to HexagonLogo, VoltOptionCard, VoltMeasurementCard, VoltSegmentedRow, QuestionScaffold — describe purpose + selection state contract + accepted parameter ranges
+- [x] Run `./gradlew :androidApp:assembleDebug -x test` — must remain green
+- [x] Commit: `polish(designsystem): KDoc + parameter-order standardization`
+- **Status:** complete (2026-05-28)
 
 ### Phase 3: Auth Flow Clean Pass
 - [ ] AuthGate (K1n7u5): copy review, Apple/Google/Email/Skip stack, legal footer i18n
@@ -144,6 +144,11 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 | 2026-05-28 | Pencil reads via `snapshot_layout` + `batch_get` + `get_variables` only — NEVER `get_screenshot` | Token-burn cost; predecessor already verified visual fidelity | med |
 | 2026-05-28 | Per-screen atomic commits, no push | Bisect-friendly; user reviews + pushes in morning | low |
 | 2026-05-28 | Banned-term enforcement preserved | CLAUDE.md hard rule — "trainer/coach/məşqçi" → use "mütəxəssis uyğunluq yoxlaması" | high |
+| 2026-05-28 | Phase 2: fix 3 silent hex drifts (`danger 4F→4D`, `outlineStrong 3D→3E`, `onSurfaceMuted 9A→A1`); add 6 missing tokens (`voltPressed`, `voltSoft`, `onSurfaceFaint`, `mossDim`, `dangerSoft`, plus `VoltRadius` sm/md/lg) | Align with Pencil source-of-truth from `get_variables` | med |
+| 2026-05-28 | Keep `onSurface = 0xFFF2F2F2` divergent from Pencil's pure `#FFFFFF` | Deliberate softening for long-form dark UI; documented in VoltColors KDoc | low |
+| 2026-05-28 | Defer VoltType `lineHeight` ratio adjustment (current 1.25–1.29 vs Pencil 1.15) | Predecessor verified visual fidelity; refactoring lineHeight risks regressions across all 40 screens for a sub-pixel delta | low |
+| 2026-05-28 | Remove unused `total: Int?` parameter from `VoltProgressBar` | Dead code suppressed `UNUSED_PARAMETER` warning — clearer surface without it | low |
+| 2026-05-28 | Defer uniform `Result<T>` wrapping for non-Auth repos to Phase 6 | Existing pattern is "Auth wraps, foundation reads throw" — needs explicit policy call before mass refactor | low |
 
 ## Findings / Current State
 
@@ -263,6 +268,7 @@ KDoc coverage is broadly strong (all 15 design-system component files contain at
 
 - 2026-05-28 00:35 — Feature initialized for overnight Ralph-loop autonomous polish pass; predecessor `finalize-mobile-ui-for-onboarding` provides 40/40 1:1 Pencil-fidelity baseline
 - 2026-05-28 01:10 — **Phase 1 complete.** Audit findings written (7 sections: inventory, hardcode scan, TODO inventory, Volt↔Pencil parity, KDoc surface, mock-repo contract, observations). 0 in-scope user-visible string leaks; predecessor cleanup already ate the obvious ones. 2 silent hex drift bugs (danger, border-strong) + 6 missing tokens are the main Phase 2 fix list. Build baseline `:androidApp:assembleDebug -x test` green (43s, 0 problems).
+- 2026-05-28 01:35 — **Phase 2 complete.** VoltColors hex drifts fixed (danger, outlineStrong, onSurfaceMuted). 5 new color tokens added (voltPressed, voltSoft, onSurfaceFaint, mossDim, dangerSoft). `VoltRadius` object created mirroring Pencil's sm/md/lg radius variables. `QuestionScaffold` gained the missing `modifier` parameter; `QuestionProgressBar` gained per-composable KDoc; `VoltProgressBar`'s dead `total` parameter removed (+ callsite fix). Build green (23s, 0 problems).
 
 
 ## Notes for Next Session

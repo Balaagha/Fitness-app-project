@@ -40,9 +40,17 @@ import org.betech.fitnes.designsystem.typography.VoltType
  *   • Top bar — circular back button (left) + 7-segment [QuestionProgressBar] (right)
  *   • Header — title + optional subtitle
  *   • Content — caller-provided question body (Column scope)
- *   • Bottom CTA — caller-provided primary button (typically [VoltButton])
+ *   • Bottom CTA — caller-provided primary button (typically `VoltButton`)
  *
  * Side padding is 24dp throughout. Background is `surface0` (per Pencil S5QT23).
+ *
+ * @param progress current step / total (1..7) used by [QuestionProgressBar].
+ * @param title the large primary question text.
+ * @param subtitle optional muted supporting line under the title.
+ * @param onBack invoked when the back chevron is tapped.
+ * @param primaryCta bottom-anchored full-width CTA composable (caller-owned).
+ * @param modifier outermost modifier — applied to the root [Box]. Default is empty.
+ * @param content the question-body content lambda; receives [ColumnScope].
  */
 @Composable
 fun QuestionScaffold(
@@ -51,10 +59,11 @@ fun QuestionScaffold(
     subtitle: String?,
     onBack: () -> Unit,
     primaryCta: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(VoltColors.surface0),
     ) {

@@ -96,7 +96,7 @@ class DesignSystemPreviewScreen : Screen {
                 }
 
                 SectionLabel("ProgressBar (0.4)")
-                VoltProgressBar(progress = 0.4f, total = 7)
+                VoltProgressBar(progress = 0.4f)
 
                 SectionLabel("Checkbox / Radio")
                 Row(horizontalArrangement = Arrangement.spacedBy(VoltSpacing.lg)) {

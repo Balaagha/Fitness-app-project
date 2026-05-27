@@ -14,16 +14,15 @@ import org.betech.fitnes.designsystem.color.VoltColors
 
 /**
  * Linear progress bar for multi-step flows.
- * Used in VoltAppBar (onboarding 1/7 style) and standalone.
+ * Used by [VoltAppBar] (onboarding 1/7 style) and standalone screens.
  *
- * @param progress 0f..1f.
- * @param total optional total step count (kept for future a11y semantics).
+ * @param progress 0f..1f; values outside are clamped.
+ * @param modifier outer modifier; caller owns width.
  */
 @Composable
 fun VoltProgressBar(
     progress: Float,
-    modifier: Modifier = Modifier,
-    @Suppress("UNUSED_PARAMETER") total: Int? = null
+    modifier: Modifier = Modifier
 ) {
     val clamped = progress.coerceIn(0f, 1f)
     Box(

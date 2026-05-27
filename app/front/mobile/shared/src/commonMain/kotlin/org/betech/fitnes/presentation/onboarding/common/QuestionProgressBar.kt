@@ -14,8 +14,10 @@ import androidx.compose.ui.unit.dp
 import org.betech.fitnes.designsystem.color.VoltColors
 
 /**
- * Step-progress bar shared across the 7 mandatory onboarding questions.
- * Equal-weight pills with `current` segments filled volt, rest outline-tinted.
+ * Step-progress descriptor used by [QuestionProgressBar].
+ *
+ * @param current 1-based index of the current step (must be in 1..total).
+ * @param total total number of steps; defaults to 7 (the mandatory Q1–Q7 spine).
  */
 data class QuestionProgress(val current: Int, val total: Int = 7) {
     init {
@@ -23,6 +25,15 @@ data class QuestionProgress(val current: Int, val total: Int = 7) {
     }
 }
 
+/**
+ * Step-progress bar shared across the 7 mandatory onboarding questions
+ * (Q1–Q7). Renders `total` equal-weight 6dp-tall pills with the first
+ * `current` segments filled `volt`; remaining segments are tinted with `outline`.
+ *
+ * @param progress current/total descriptor; see [QuestionProgress].
+ * @param modifier applied to the outer [Row]. Caller controls width; pills
+ *                 stretch to fill the available row.
+ */
 @Composable
 fun QuestionProgressBar(
     progress: QuestionProgress,
