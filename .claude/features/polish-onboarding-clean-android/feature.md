@@ -70,18 +70,18 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 - **Status:** complete (2026-05-28)
 
 ### Phase 3: Auth Flow Clean Pass
-- [ ] AuthGate (K1n7u5): copy review, Apple/Google/Email/Skip stack, legal footer i18n
-- [ ] EmailSignup (ZJFFO): 4 validation chip live, mock signup → EmailVerify nav, error path
-- [ ] EmailLogin (O8lWVO): forgot-pwd link, signup link, mock login error → LoginError nav
-- [ ] EmailVerify (zREhj): 6-digit OTP overlay, 45s resend cooldown, wrong-email back chevron
-- [ ] PwdResetEmail (rzAPa): email + 15min info disclaimer + send-link mock
-- [ ] PwdResetForm (vA9Tb): 4 validation chip → navigate to login on submit
-- [ ] LoginError (u27ve): retry CTA, "şifrəni unutdum" link
-- [ ] SignupEmailExists (cYfk5): "bu e-poçt artıq qeydiyyatdadır" + login nav
-- [ ] RateLimit (IFSQ3): cool-down message + try-again CTA
-- [ ] ResetLinkExpired (a3Vwh6): re-request link CTA
-- [ ] Build green after each screen; commit per-screen `polish(<screen>): clean pass`
-- **Status:** pending
+- [x] AuthGate (K1n7u5): copy review, Apple/Google/Email/Skip stack, legal footer i18n — clean (Google brand hex is intentional, KDoc justifies)
+- [x] EmailSignup (ZJFFO): 4 validation chip live, mock signup → EmailVerify nav, error path — clean (zero hardcode / TODO / banned-term hits)
+- [x] EmailLogin (O8lWVO): forgot-pwd link, signup link, mock login error → LoginError nav — clean
+- [x] EmailVerify (zREhj): 6-digit OTP overlay, 45s resend cooldown, wrong-email back chevron — clean (Strings.kt drives every visible label)
+- [x] PwdResetEmail (rzAPa): email + 15min info disclaimer + send-link mock — clean
+- [x] PwdResetForm (vA9Tb): 4 validation chip → navigate to login on submit — clean
+- [x] LoginError (u27ve): retry CTA, "şifrəni unutdum" link — clean
+- [x] SignupEmailExists (cYfk5): "bu e-poçt artıq qeydiyyatdadır" + login nav — clean
+- [x] RateLimit (IFSQ3): cool-down message + try-again CTA — scrim hex `0xCC000000` promoted to `VoltColors.scrim` (token added to design system)
+- [x] ResetLinkExpired (a3Vwh6): re-request link CTA — clean
+- [x] Build green after each screen; commit per-screen `polish(<screen>): clean pass`
+- **Status:** complete (2026-05-28). Only RateLimit needed a code change (scrim token unification); other 9 screens were already structurally clean from predecessor pass and check off without commits.
 
 ### Phase 4: Q-Screens + Onboarding Spine Clean Pass
 - [ ] Splash (s7yM8w): 1.4s delay → LanguageSelect nav, Canvas hexagon, no static asset
@@ -269,6 +269,7 @@ KDoc coverage is broadly strong (all 15 design-system component files contain at
 - 2026-05-28 00:35 — Feature initialized for overnight Ralph-loop autonomous polish pass; predecessor `finalize-mobile-ui-for-onboarding` provides 40/40 1:1 Pencil-fidelity baseline
 - 2026-05-28 01:10 — **Phase 1 complete.** Audit findings written (7 sections: inventory, hardcode scan, TODO inventory, Volt↔Pencil parity, KDoc surface, mock-repo contract, observations). 0 in-scope user-visible string leaks; predecessor cleanup already ate the obvious ones. 2 silent hex drift bugs (danger, border-strong) + 6 missing tokens are the main Phase 2 fix list. Build baseline `:androidApp:assembleDebug -x test` green (43s, 0 problems).
 - 2026-05-28 01:35 — **Phase 2 complete.** VoltColors hex drifts fixed (danger, outlineStrong, onSurfaceMuted). 5 new color tokens added (voltPressed, voltSoft, onSurfaceFaint, mossDim, dangerSoft). `VoltRadius` object created mirroring Pencil's sm/md/lg radius variables. `QuestionScaffold` gained the missing `modifier` parameter; `QuestionProgressBar` gained per-composable KDoc; `VoltProgressBar`'s dead `total` parameter removed (+ callsite fix). Build green (23s, 0 problems).
+- 2026-05-28 01:55 — **Phase 3 complete.** Audit found 9/10 auth screens already structurally clean (no hardcoded strings, no banned terms, no legacy hex, no orphan TODOs); only RateLimit (IFSQ3) had a raw `Color(0xCC000000)` scrim hex which was promoted to a new `VoltColors.scrim` token (also future-ready for ParentalBottomSheet in Phase 5). Single commit `polish(ratelimit): unify scrim token`.
 
 
 ## Notes for Next Session

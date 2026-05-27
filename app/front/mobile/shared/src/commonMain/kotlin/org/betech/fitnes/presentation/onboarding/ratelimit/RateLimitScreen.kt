@@ -76,7 +76,7 @@ private fun ModalContent(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xCC000000))
+            .background(VoltColors.scrim)
             .clickable(onClick = onDismiss),
         contentAlignment = Alignment.Center,
     ) {

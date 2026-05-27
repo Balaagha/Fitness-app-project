@@ -51,6 +51,9 @@ object VoltColors {
 
     val outline = Color(0xFF2A2A2E)
     val outlineStrong = Color(0xFF3E3E44)
+
+    /** Full-screen scrim behind modal sheets / dialogs (≈80% black). */
+    val scrim = Color(0xCC000000)
 }
 
 fun voltDarkColorScheme(): ColorScheme = darkColorScheme(
