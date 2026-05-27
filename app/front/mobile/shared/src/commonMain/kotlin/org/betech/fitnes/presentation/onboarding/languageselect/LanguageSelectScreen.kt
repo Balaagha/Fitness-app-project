@@ -21,10 +21,13 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -70,17 +73,20 @@ class LanguageSelectScreen : Screen {
         val viewModel: LanguageSelectViewModel = koinViewModel()
         val state by viewModel.collectAsState()
         val strings = LocalStrings.current
+        val snackbarHostState = remember { SnackbarHostState() }
 
         viewModel.collectSideEffect { effect ->
             when (effect) {
                 LanguageSelectSideEffect.NavigateToWelcome -> navigator.replace(WelcomeScreen())
-                is LanguageSelectSideEffect.ShowError -> Unit // TODO: surface as toast/snackbar
+                is LanguageSelectSideEffect.ShowError ->
+                    snackbarHostState.showSnackbar(effect.message)
             }
         }
 
         LanguageSelectContent(
             state = state,
             strings = strings,
+            snackbarHostState = snackbarHostState,
             onSelect = { viewModel.onIntent(LanguageSelectIntent.Select(it)) },
             onConfirm = { viewModel.onIntent(LanguageSelectIntent.Confirm) },
         )
@@ -91,6 +97,7 @@ class LanguageSelectScreen : Screen {
 private fun LanguageSelectContent(
     state: LanguageSelectState,
     strings: Strings,
+    snackbarHostState: SnackbarHostState,
     onSelect: (LanguageCode) -> Unit,
     onConfirm: () -> Unit,
 ) {
@@ -166,6 +173,14 @@ private fun LanguageSelectContent(
                 enabled = !state.isSaving,
             )
         }
+
+        // Error snackbar — sits above the anchored CTA.
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 16.dp, vertical = 96.dp),
+        )
     }
 }
 
