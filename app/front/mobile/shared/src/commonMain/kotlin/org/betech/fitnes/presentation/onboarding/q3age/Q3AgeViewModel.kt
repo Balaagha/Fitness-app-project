@@ -16,8 +16,9 @@ import org.orbitmvi.orbit.viewmodel.container
  * the [OnboardingAnswer.Slider] variant because age is a free-form integer
  * that may arrive from the keypad too — not strictly a slider value.
  *
- * TODO (V5 · Q3 soft-warning, Pencil iNSs8): when age < 16 or age > 65,
- * branch to Q3AgeWarningScreen instead of Q4 — handled in a later iteration.
+ * Routing on [Q3AgeIntent.Confirm]:
+ *  - age in `SOFT_MIN_AGE..SOFT_MAX_AGE` → `NavigateToQ4HeightWeight`
+ *  - otherwise (Pencil V5 · iNSs8) → `NavigateToSoftWarning` (non-blocking)
  */
 class Q3AgeViewModel(
     private val onboardingRepo: OnboardingRepository,
@@ -64,8 +65,12 @@ class Q3AgeViewModel(
                         )
                     )
                     reduce { state.copy(isSaving = false) }
-                    // TODO (V5 iNSs8): if (state.age < 16 || state.age > 65) → soft-warning route.
-                    postSideEffect(Q3AgeSideEffect.NavigateToQ4HeightWeight)
+                    val inSuggestedRange =
+                        state.age in Q3AgeState.SOFT_MIN_AGE..Q3AgeState.SOFT_MAX_AGE
+                    postSideEffect(
+                        if (inSuggestedRange) Q3AgeSideEffect.NavigateToQ4HeightWeight
+                        else Q3AgeSideEffect.NavigateToSoftWarning
+                    )
                 } catch (t: Throwable) {
                     reduce { state.copy(isSaving = false) }
                     postSideEffect(Q3AgeSideEffect.ShowError(t.message ?: "Error"))

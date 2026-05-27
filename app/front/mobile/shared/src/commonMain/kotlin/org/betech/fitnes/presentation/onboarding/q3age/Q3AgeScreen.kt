@@ -48,6 +48,7 @@ import org.betech.fitnes.localization.Strings
 import org.betech.fitnes.presentation.onboarding.common.QuestionProgress
 import org.betech.fitnes.presentation.onboarding.common.QuestionScaffold
 import org.betech.fitnes.presentation.onboarding.q2sex.Q2SexScreen
+import org.betech.fitnes.presentation.onboarding.q3agesoftwarning.Q3AgeSoftWarningScreen
 import org.betech.fitnes.presentation.onboarding.q4heightweight.Q4HeightWeightScreen
 import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
@@ -60,7 +61,9 @@ import org.orbitmvi.orbit.compose.collectSideEffect
  * a [VoltSlider] for fast scrubbing 13..90, and a tappable hint row
  * that opens a numeric input dialog for direct entry.
  *
- * V5 soft-warning (Pencil iNSs8, age<16 || age>65) deferred — see [Q3AgeViewModel].
+ * On `Confirm`, ages outside the suggested range
+ * ([Q3AgeState.SOFT_MIN_AGE]..[Q3AgeState.SOFT_MAX_AGE]) route to
+ * `Q3AgeSoftWarningScreen` (Pencil V5 · iNSs8) — non-blocking, informational.
  */
 class Q3AgeScreen : Screen {
     @Composable
@@ -77,6 +80,8 @@ class Q3AgeScreen : Screen {
                 }
                 Q3AgeSideEffect.NavigateToQ4HeightWeight ->
                     navigator.push(Q4HeightWeightScreen())
+                Q3AgeSideEffect.NavigateToSoftWarning ->
+                    navigator.push(Q3AgeSoftWarningScreen())
                 is Q3AgeSideEffect.ShowError -> Unit // toast hook later
             }
         }

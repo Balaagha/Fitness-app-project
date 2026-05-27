@@ -36,6 +36,7 @@ import org.betech.fitnes.localization.LocalStrings
 import org.betech.fitnes.localization.Strings
 import org.betech.fitnes.presentation.onboarding.common.QuestionProgress
 import org.betech.fitnes.presentation.onboarding.common.QuestionScaffold
+import org.betech.fitnes.presentation.onboarding.q3age.Q3AgeState
 import org.betech.fitnes.presentation.onboarding.q4heightweight.Q4HeightWeightScreen
 import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
@@ -122,12 +123,20 @@ private fun StepperCard(
         VoltSlider(
             value = age.toFloat(),
             onValueChange = { onSlide(it.toInt()) },
-            valueRange = 13f..90f,
+            valueRange = Q3AgeState.MIN_AGE.toFloat()..Q3AgeState.MAX_AGE.toFloat(),
             modifier = Modifier.fillMaxWidth(),
         )
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text("13", style = VoltType.bodyMedium.copy(fontSize = 12.sp), color = VoltColors.onSurfaceMuted)
-            Text("90", style = VoltType.bodyMedium.copy(fontSize = 12.sp), color = VoltColors.onSurfaceMuted)
+            Text(
+                text = Q3AgeState.MIN_AGE.toString(),
+                style = VoltType.bodyMedium.copy(fontSize = 12.sp),
+                color = VoltColors.onSurfaceMuted,
+            )
+            Text(
+                text = Q3AgeState.MAX_AGE.toString(),
+                style = VoltType.bodyMedium.copy(fontSize = 12.sp),
+                color = VoltColors.onSurfaceMuted,
+            )
         }
     }
 }
