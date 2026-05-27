@@ -29,7 +29,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.text.font.FontWeight
@@ -53,7 +52,7 @@ import org.orbitmvi.orbit.compose.collectSideEffect
  * `ModalBottomSheet` — avoiding Material's experimental sheet API keeps
  * the KMP surface stable across iOS/Android Compose targets). Composition:
  *
- *  - 0x99 surface0 scrim filling the screen (tap → dismiss).
+ *  - [VoltColors.scrim] (≈80% black) filling the screen (tap → dismiss).
  *  - Bottom-anchored sheet card (surface1, 24dp top corners), max ~88%
  *    of screen height; inner column is vertically scrollable.
  *  - Header row (eyebrow + title) with close `X` aligned top-right.
@@ -96,7 +95,7 @@ private fun ParentalBottomSheetContent(
         modifier = Modifier
             .fillMaxSize()
             // Translucent scrim — tap-to-dismiss.
-            .background(Color(0xCC000000))
+            .background(VoltColors.scrim)
             .clickable(onClick = onScrim),
     ) {
         // Sheet card — bottom-anchored. We block clickable propagation by
