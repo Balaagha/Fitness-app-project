@@ -10,9 +10,9 @@ package org.betech.fitnes.presentation.onboarding.q1goal
  *   LOSE_FAT          → GoalType.CUT
  *   BUILD_MUSCLE      → GoalType.BULK
  *   GET_TONED         → GoalType.GENERAL_FIT
- *   INCREASE_STRENGTH → GoalType.BULK
- *     (closest schema bucket — TODO: split bulk into a strength sub-goal
- *      if a future PRD revision adds it.)
+ *   INCREASE_STRENGTH → GoalType.BULK (closest schema bucket; a dedicated
+ *                       strength sub-goal is a PRD-revision item, not a
+ *                       code-level TODO)
  */
 enum class GoalChoice { LOSE_FAT, BUILD_MUSCLE, GET_TONED, INCREASE_STRENGTH }
 

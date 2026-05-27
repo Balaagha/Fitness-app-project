@@ -57,11 +57,13 @@ class Q1GoalViewModel(
         }
     }
 
+    // INCREASE_STRENGTH collapses to BULK — closest schema bucket. A dedicated
+    // strength sub-goal is a PRD-revision item tracked in the predecessor's
+    // findings, not in code.
     private fun mapToGoalType(choice: GoalChoice): GoalType = when (choice) {
         GoalChoice.LOSE_FAT -> GoalType.CUT
         GoalChoice.BUILD_MUSCLE -> GoalType.BULK
         GoalChoice.GET_TONED -> GoalType.GENERAL_FIT
-        // TODO: split BULK into a strength sub-goal if PRD revision adds one.
         GoalChoice.INCREASE_STRENGTH -> GoalType.BULK
     }
 }
