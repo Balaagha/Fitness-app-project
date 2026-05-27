@@ -105,20 +105,20 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 - **Status:** complete (2026-05-28). 14/18 screens audit-only (already clean). 4 screens needed code work (Q3Age soft-warning routing + Q3AgeSoftWarning literal hoist landed together; LanguageSelect snackbar; Q1Goal TODO demotion; Q6Context TODO demotion). 4 atomic commits.
 
 ### Phase 5: Pregnancy + Parental + Account Branch Clean Pass
-- [ ] PregnancyNudge (M52XdD): 64dp shield-check tile + 3 benefit rows + INFO privacy — NOT AI-trigger
-- [ ] PregnancyConfirm (pqupj): 4 surface1 safe-item cards (mobility/breath/pelvic/stretch) + INFO medical note + "həkim/mütəxəssis" wording — NOT AI-trigger
-- [ ] TrimesterPostpartum (C6Ya4A): 1/3 progress + 4 period options (T1/T2/T3/POSTPARTUM), default=T2
-- [ ] SafePlan (o0BUd): curated 4-week static template — zero repo deps, hard-stop enforced
-- [ ] TodaySafeWorkout (QHsnW): curated 5-row static template — VM routes intents to side-effects only
-- [ ] ExerciseDetailPreg (YZ38M): VM-empty-state pattern (`data object State`), ShowToast carries semantic key only
-- [ ] SettingsPregMode (vUAuh): surface1 list + 36dp surface2 RoundedCornerShape(10dp) icon tiles + Canvas glyphs
-- [ ] ParentalNotice (XG54w): consent gate with checkbox + ZERO analytics until schema approved
-- [ ] ParentalBottomSheet (P5mDxB): full-screen Voyager Screen, 0.88 height bottom-anchored card, 0xCC black scrim, swallow taps
-- [ ] OfflineBanner (K2TtZa): inline banner pattern (not full screen)
-- [ ] SignoutConfirm (SCKUA): 3 ✓ backup-status rows + DestructiveButton (inline danger Button, not VoltButton)
-- [ ] DeleteAcc1 (e74FR): destructive intro + BackChevron pattern, no repo calls
-- [ ] DeleteAcc2 (GauGs): type-to-confirm "SİL" gate, case-sensitive exact match, no trim, danger-outlined OutlinedTextField
-- **Status:** pending
+- [x] PregnancyNudge (M52XdD): 64dp shield-check tile + 3 benefit rows + INFO privacy — NOT AI-trigger — clean
+- [x] PregnancyConfirm (pqupj): 4 surface1 safe-item cards + INFO medical note + "həkim/mütəxəssis" wording — NOT AI-trigger — clean (banned-term grep hit is the KDoc anti-pattern warning, intentional)
+- [x] TrimesterPostpartum (C6Ya4A): 1/3 progress + 4 period options (T1/T2/T3/POSTPARTUM), default=T2 — clean
+- [x] SafePlan (o0BUd): curated 4-week static template — zero repo deps, hard-stop enforced — clean
+- [x] TodaySafeWorkout (QHsnW): curated 5-row static template — VM routes intents to side-effects only — clean
+- [x] ExerciseDetailPreg (YZ38M): VM-empty-state pattern (`data object State`), ShowToast carries semantic key only — clean
+- [x] SettingsPregMode (vUAuh): surface1 list + 36dp surface2 RoundedCornerShape(10dp) icon tiles + Canvas glyphs — clean
+- [x] ParentalNotice (XG54w): consent gate with checkbox + ZERO analytics until schema approved — clean
+- [x] ParentalBottomSheet (P5mDxB): full-screen Voyager Screen, 0.88 height bottom-anchored card, 0xCC black scrim, swallow taps — scrim hex adopted `VoltColors.scrim` token (`polish(parentalbottomsheet)`)
+- [x] OfflineBanner (K2TtZa): inline banner pattern (not full screen) — `Text("📵", ...)` emoji glyph kept inline (graphic element, locale-invariant — promoting to Strings would be over-engineering)
+- [x] SignoutConfirm (SCKUA): 3 ✓ backup-status rows + DestructiveButton (inline danger Button, not VoltButton) — clean
+- [x] DeleteAcc1 (e74FR): destructive intro + BackChevron pattern, no repo calls — clean
+- [x] DeleteAcc2 (GauGs): type-to-confirm "SİL" gate, case-sensitive exact match, no trim, danger-outlined OutlinedTextField — clean (single TODO is correctly deferred: it's a forward-looking marker for `AuthRepository.deleteAccount()` which lands when Supabase wires up — out of scope per non-goals)
+- **Status:** complete (2026-05-28). 12/13 audit-only (already clean). 1 commit `polish(parentalbottomsheet): adopt VoltColors.scrim token`.
 
 ### Phase 6: Localization + Mock Repo + QA Final Pass
 - [ ] `grep -rn 'Text("' app/front/mobile/shared/src/commonMain` — every literal must be Strings.<key>; fix violations
@@ -271,6 +271,7 @@ KDoc coverage is broadly strong (all 15 design-system component files contain at
 - 2026-05-28 01:35 — **Phase 2 complete.** VoltColors hex drifts fixed (danger, outlineStrong, onSurfaceMuted). 5 new color tokens added (voltPressed, voltSoft, onSurfaceFaint, mossDim, dangerSoft). `VoltRadius` object created mirroring Pencil's sm/md/lg radius variables. `QuestionScaffold` gained the missing `modifier` parameter; `QuestionProgressBar` gained per-composable KDoc; `VoltProgressBar`'s dead `total` parameter removed (+ callsite fix). Build green (23s, 0 problems).
 - 2026-05-28 01:55 — **Phase 3 complete.** Audit found 9/10 auth screens already structurally clean (no hardcoded strings, no banned terms, no legacy hex, no orphan TODOs); only RateLimit (IFSQ3) had a raw `Color(0xCC000000)` scrim hex which was promoted to a new `VoltColors.scrim` token (also future-ready for ParentalBottomSheet in Phase 5). Single commit `polish(ratelimit): unify scrim token`.
 - 2026-05-28 02:30 — **Phase 4 complete.** 14/18 spine screens already clean. 4 commits: `polish(q3age)` (soft-warning routing wired + Q3AgeSoftWarning literal hoist), `polish(languageselect)` (ShowError → SnackbarHost), `polish(q1goal)` (TODO → KDoc), `polish(q6context)` (3 TODOs → KDoc). Build green between every commit.
+- 2026-05-28 02:50 — **Phase 5 complete.** 12/13 pregnancy + parental + account branch screens already clean. Single commit `polish(parentalbottomsheet): adopt VoltColors.scrim token` — replaces the inline `Color(0xCC000000)` scrim hex with the shared design-system token added in Phase 3.
 
 
 ## Notes for Next Session
