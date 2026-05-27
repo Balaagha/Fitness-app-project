@@ -13,14 +13,14 @@ import org.orbitmvi.orbit.viewmodel.container
  * Q6 · Context screen VM (Orbit MVI).
  *
  * UI exposes 4 buckets ([ContextChoice]); the schema column accepts 3
- * ([TrainingContext]). Mapping:
+ * ([TrainingContext]). Mapping (PRD-revision items, not code TODOs):
  *
  * | UI choice         | TrainingContext  | Note                                 |
  * |-------------------|------------------|--------------------------------------|
- * | HOME_BODYWEIGHT   | HOME_ONLY        | TODO: track equipment flag separately|
- * | HOME_EQUIPMENT    | HOME_ONLY        | TODO: track equipment flag separately|
+ * | HOME_BODYWEIGHT   | HOME_ONLY        | equipment flag pending schema column |
+ * | HOME_EQUIPMENT    | HOME_ONLY        | equipment flag pending schema column |
  * | GYM               | SERIOUS_GYM      | full equipment expectation           |
- * | HYBRID            | CASUAL_GYM       | TODO: PRD revision may add HYBRID    |
+ * | HYBRID            | CASUAL_GYM       | dedicated HYBRID value pending PRD   |
  *
  * The persisted [OnboardingAnswer] keeps the *UI* enum name so the full
  * distinction survives until the schema gains an equipment flag /
@@ -73,13 +73,13 @@ class Q6ContextViewModel(
         }
     }
 
+    // Both HOME_* buckets collapse to HOME_ONLY until the schema gets a
+    // dedicated equipment-flag column. HYBRID collapses to CASUAL_GYM
+    // (closest existing bucket — mixed equipment access).
     private fun mapToTrainingContext(choice: ContextChoice): TrainingContext = when (choice) {
-        // TODO: track equipment flag separately — both home buckets collapse to HOME_ONLY today.
         ContextChoice.HOME_BODYWEIGHT -> TrainingContext.HOME_ONLY
         ContextChoice.HOME_EQUIPMENT -> TrainingContext.HOME_ONLY
         ContextChoice.GYM -> TrainingContext.SERIOUS_GYM
-        // TODO: PRD revision may add a dedicated HYBRID value; CASUAL_GYM is the
-        // closest existing bucket (mixed equipment access).
         ContextChoice.HYBRID -> TrainingContext.CASUAL_GYM
     }
 }
