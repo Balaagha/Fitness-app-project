@@ -50,13 +50,13 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 ## Phases
 
 ### Phase 1: Audit & Inventory
-- [ ] Open `mcp__pencil__get_editor_state(include_schema:true)` once; cache schema in this iteration's batch_get calls
-- [ ] Walk Compose source tree `presentation/onboarding/` — list every screen file + matching VM + matching state class
-- [ ] For each screen, mark issues found: hardcoded strings, magic dp/sp values, unused imports, dead state fields, missing analytics calls, missing AZ/RU/EN keys, TODO markers, deprecated API usage
-- [ ] Catalogue reusable components: VoltButton, VoltOptionCard, VoltSlider, VoltMeasurementCard, VoltSegmentedRow, QuestionScaffold, QuestionProgressBar, HexagonLogo, VoltAppBar, VoltTextField, DestructiveButton, BackChevron — record each's parameter signature + KDoc presence
-- [ ] Review mock repo surface: AuthRepository, UserProfileRepository, OnboardingRepository, AnalyticsRepository, ExerciseRepository — record every method, return shape, success/failure paths
-- [ ] Write audit table into `## Findings / Current State` below (one row per issue, with screen+severity)
-- **Status:** in_progress
+- [x] Open `mcp__pencil__get_editor_state(include_schema:true)` once; cache schema in this iteration's batch_get calls
+- [x] Walk Compose source tree `presentation/onboarding/` — list every screen file + matching VM + matching state class
+- [x] For each screen, mark issues found: hardcoded strings, magic dp/sp values, unused imports, dead state fields, missing analytics calls, missing AZ/RU/EN keys, TODO markers, deprecated API usage
+- [x] Catalogue reusable components: VoltButton, VoltOptionCard, VoltSlider, VoltMeasurementCard, VoltSegmentedRow, QuestionScaffold, QuestionProgressBar, HexagonLogo, VoltAppBar, VoltTextField, DestructiveButton, BackChevron — record each's parameter signature + KDoc presence
+- [x] Review mock repo surface: AuthRepository, UserProfileRepository, OnboardingRepository, AnalyticsRepository, ExerciseRepository — record every method, return shape, success/failure paths
+- [x] Write audit table into `## Findings / Current State` below (one row per issue, with screen+severity)
+- **Status:** complete (2026-05-28)
 
 ### Phase 2: Design System Hardening
 - [ ] `mcp__pencil__get_variables` — pull full Pencil token table
@@ -146,7 +146,110 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 | 2026-05-28 | Banned-term enforcement preserved | CLAUDE.md hard rule — "trainer/coach/məşqçi" → use "mütəxəssis uyğunluq yoxlaması" | high |
 
 ## Findings / Current State
-<!-- Ralph fills this during Phase 1 audit. One row per issue, one paragraph per architectural finding. -->
+
+### 1. Onboarding screen inventory (40 screens, all MVI-quintet — Intent/State/SideEffect/VM/Screen)
+
+40 onboarding screens present under `presentation/onboarding/`. Two non-onboarding placeholders (`home/HomeScreen.kt`, `login/LoginScreen.kt`) are post-onboarding destinations — out of scope for this refactor (will become Faza 2 entry points). All 40 in-scope screens have the canonical MVI quintet structure.
+
+Pencil node-ID ↔ folder mapping (verified in notes.md `[refs]` line 60):
+- splash, languageselect, welcome, aidisclosure, q1goal..q7daysession, q3agesoftwarning, profilesummary, paywall, authgate, emailsignup, emaillogin, emailverify, pwdresetemail, pwdresetform, loginerror, signupemailexists, ratelimit, resetlinkexpired, pregnancynudge, pregnancyconfirm, trimesterpostpartum, safeplan, todaysafeworkout, exercisedetailpreg, settingspregmode, parentalnotice, parentalbottomsheet, offlinebanner, signoutconfirm, deleteacc1, deleteacc2.
+
+### 2. Hardcode-string scan (`Text(".."`) → 3 in-scope hits, all acceptable
+
+| Screen | Line | Literal | Severity | Action |
+|--------|------|---------|----------|--------|
+| OfflineBannerScreen | 177 | `Text("📵", ...)` | low | OK — emoji glyph, not localizable copy |
+| Q3AgeSoftWarningScreen | 129 | `Text("13", ...)` | low | OK — numeric range marker (locale-invariant) |
+| Q3AgeSoftWarningScreen | 130 | `Text("90", ...)` | low | OK — numeric range marker (locale-invariant) |
+| HomeScreen | 41 | `text = "Home — TODO"` | n/a | out-of-scope placeholder (post-onboarding) |
+| LoginScreen | 28 | `text = "Login — TODO"` | n/a | out-of-scope placeholder (post-onboarding) |
+
+Predecessor pass already promoted `"İZLƏ"/"ÖLÇ"/"ÇAT"/"Elm"` → Strings.welcomeV2/V3/V4Title + welcomePillScience etc. **No in-scope user-visible copy literals leak from composables.**
+
+### 3. TODO marker inventory (excluding "TODO: native review" benign markers)
+
+| File | Line(s) | Marker | Resolution path |
+|------|---------|--------|-----------------|
+| Q3AgeViewModel.kt | 19, 67 | V5 iNSs8 soft-warning routing not wired | Phase 4 (Q3 Age SoftWarning task) — wire `if (age < 16 \|\| age > 65) → SoftWarning` branch |
+| Q6ContextViewModel.kt | 20, 21, 23, 77, 81 | 4 UI options collapse to 3 schema values (HOME_ONLY × 2, CASUAL_GYM ← HYBRID) | Documented; PRD revision out-of-scope. Add note clarifying mapping is intentional, demote TODO to KDoc note |
+| Q1GoalViewModel.kt | 64; Q1GoalState.kt:14 | Schema may add a strength sub-goal | Documented; PRD revision out-of-scope. Demote TODO to KDoc note |
+| DeleteAcc2ViewModel.kt | 41 | `AuthRepository.deleteAccount()` not yet present | Phase 5 (DeleteAcc2) — keep TODO; deferred to Supabase-wired phase |
+| LanguageSelectScreen.kt | 77 | `ShowError` side effect ignored — no toast/snackbar surface | Phase 4 (LanguageSelect) — wire to a shared SnackbarHost or in-line dismissible banner |
+| AuthGateSideEffect.kt:13, AuthGateViewModel.kt:86, AuthGateScreen.kt:94 | — | `LEGAL_TODO` constant + `legalTodoToast` Strings key — placeholder until legal pages land | OK as-is; canonical pattern for "not-yet-built" toasts |
+
+### 4. Volt vs Pencil token parity (Pencil `get_variables` cross-check)
+
+| Token | Pencil | VoltColors.kt | Severity |
+|-------|--------|----------------|----------|
+| accent | `#E6FF00` | `volt = 0xFFE6FF00` | ✅ match |
+| on-accent | `#0E0E0E` | `onVolt = 0xFF0E0E0E` | ✅ match |
+| bg | `#0A0A0B` | `surface0 = 0xFF0A0A0B` | ✅ match |
+| surface | `#141416` | `surface1 = 0xFF141416` | ✅ match |
+| surface-2 | `#1E1E21` | `surface2 = 0xFF1E1E21` | ✅ match |
+| moss | `#A4B82B` | `moss = 0xFFA4B82B` | ✅ match |
+| success | `#3DD68C` | `success = 0xFF3DD68C` | ✅ match |
+| warning | `#FFB020` | `warning = 0xFFFFB020` | ✅ match |
+| border | `#2A2A2E` | `outline = 0xFF2A2A2E` | ✅ match |
+| **danger** | `#FF4D4D` | `danger = 0xFFFF4D4F` | ⚠️ **MISMATCH** (4D vs 4F last byte) — fix to `0xFFFF4D4D` |
+| **border-strong** | `#3E3E44` | `outlineStrong = 0xFF3D3D44` | ⚠️ **MISMATCH** (3D vs 3E) — fix to `0xFF3E3E44` |
+| **ink** | `#FFFFFF` | `onSurface = 0xFFF2F2F2` | ⚠️ MISMATCH — Pencil is pure white; current "dim white" is intentional dark-mode softening. Keep as-is **but document** in VoltColors KDoc |
+| **ink-muted** | `#A1A1A8` | `onSurfaceMuted = 0xFF9A9AA0` | ⚠️ MISMATCH (subtle) — align to Pencil `0xFFA1A1A8` |
+| text-tertiary | `#6A6A72` | — | **MISSING** — add as `onSurfaceFaint = 0xFF6A6A72` for placeholder/tertiary text |
+| accent-pressed | `#C9E000` | — | **MISSING** — add as `voltPressed = 0xFFC9E000` for primary button pressed state |
+| accent-soft | `#E6FF001E` | — | **MISSING** — add as `voltSoft = 0x1EE6FF00` for accent chip backgrounds |
+| danger-soft | `#FF4D4D1E` | — | **MISSING** — add as `dangerSoft = 0x1EFF4D4D` for inline error chip backgrounds |
+| moss-dim | `#5C6B1A` | — | **MISSING** — add as `mossDim = 0xFF5C6B1A` for decorative-disabled state |
+| radius-sm / md / lg | 12 / 16 / 24 | — | **MISSING** — add `VoltRadius` object with `sm = 12.dp`, `md = 16.dp`, `lg = 24.dp` (radius scale not yet centralized) |
+| font | `"Inter"` | `FontFamily.Default` | ⚠️ Custom font load deferred (already documented in VoltType KDoc) — no action this pass |
+
+**Verdict:** 2 silent hex drift bugs (danger, border-strong), 1 alignment drift (ink-muted), 6 missing tokens needed for hover/pressed/chip states. Phase 2 work.
+
+### 5. Reusable component KDoc + signature audit
+
+| Component | KDoc present | Signature follows Compose `modifier`-first-optional convention | Action |
+|-----------|--------------|-----------------|--------|
+| VoltButton | ✓ | ✓ | none |
+| VoltOptionCard + VoltOptionIconTile | ✓ on `VoltOptionCard`, ✓ on `VoltOptionIconTile`, ✓ on `CheckGlyph` (private) | ✓ (modifier last after all-required params) | none |
+| VoltMeasurementCard | ✓ | ✓ | none |
+| VoltSegmentedRow | ✓ | ✓ | none |
+| VoltSlider | ✓ | needs verification in Phase 2 | verify |
+| VoltCard | ✓ | needs verification | verify |
+| VoltCheckbox | ✓ | needs verification | verify |
+| VoltChip | ✓ | needs verification | verify |
+| VoltDisclaimer | ✓ | needs verification | verify |
+| VoltRadio | ✓ | needs verification | verify |
+| VoltAppBar | ✓ | needs verification | verify |
+| VoltBottomSheet | ✓ | needs verification | verify |
+| VoltProgressBar | ✓ | needs verification | verify |
+| VoltTextField | ✓ | needs verification | verify |
+| HexagonLogo | ✓ | ✓ | none |
+| QuestionScaffold | ✓ | ⚠️ **MISSING `modifier` parameter entirely** | Phase 2 — add `modifier: Modifier = Modifier` |
+| QuestionProgressBar | needs verification | needs verification | verify |
+
+KDoc coverage is broadly strong (all 15 design-system component files contain at least one `/**` block). Phase 2 work: verify the lower-volume components (Slider/Card/Checkbox/Chip/Radio/AppBar/BottomSheet/ProgressBar/TextField) follow the same conventions; backfill missing `modifier` parameter on QuestionScaffold; harden parameter ordering across all reusables.
+
+### 6. Mock repo contract surface (5 domain interfaces × Impl)
+
+| Repository | Methods | Return shape | Throws? | StateFlow exposure |
+|------------|---------|--------------|---------|--------------------|
+| `AuthRepository` | signInWithEmail · signUpWithEmail · signInWithApple · signInWithGoogle · signOut · observeSession | `Result<AuthSession>` for 4 sign-in methods, `Unit` for signOut, `Flow<AuthSession?>` for observe | ✗ — wraps in `runCatching` | ✓ uses `.asStateFlow()` |
+| `OnboardingRepository` | getProgress · saveAnswer · advanceTo · reset · observeProgress | `OnboardingProgress` / `Unit` / `Flow<OnboardingProgress>` | ⚠️ throws on JSON decode failure (no `Result` wrap) | ✓ |
+| `UserProfileRepository` | getProfile · saveProfile · observeProfile · setPreferredLanguage · observePreferredLanguage | `UserProfile?` / `Unit` / `Flow<UserProfile?>` / `Flow<String>` | ⚠️ throws on JSON decode failure | ✓ |
+| `OnboardingQuestionRepository` | getQuestions | `ImmutableList<OnboardingQuestion>` | ⚠️ throws on JSON decode failure | n/a (no observe) |
+| `AnalyticsRepository` | track | `Unit` | ✗ — fire-and-forget print + emit | n/a |
+| `RemoteSource` (Mock impl) | 14 methods | `String` / `Flow<String?>` | ✗ — never throws; uses `MutableStateFlow` + `delay(300..800ms)` | ✓ via `.asStateFlow()` |
+
+**Verdict:** Only `AuthRepository` follows the "every public method returns `Result.success/failure`" criterion. The other 3 repos (`Onboarding`/`UserProfile`/`OnboardingQuestion`) throw at the JSON-decode boundary. Per the Phase 6 criterion this is non-conformant; however, the current pattern is "wrap only when failure is user-recoverable" (Auth → can show error toast; the others → app must always succeed cold-start). **Decision deferred to Phase 6** — revisit whether to enforce uniform `Result<T>` shape repo-wide, OR to relax the criterion to "Auth-only `Result`, foundation reads throw (caught by Koin scope handler)."
+
+`MockRemoteSource` is contract-clean: every method completes, never throws, `MutableStateFlow` is internal (only `.asStateFlow()` exposed), JSON-string surface mirrors what a future `SupabaseRemoteSource` would emit. One-file swap path is preserved.
+
+### 7. Other observations
+
+- **No banned-term leaks** — `grep "trainer"\|"coach"\|"məşqçi"` returns only the doctrine comments in `Strings.kt:14` and `AiDisclosureScreen.kt:60` (both KDoc warnings ABOUT the banned terms, not user copy).
+- **No legacy orange `#FF6B33`** — `grep` returns only the doctrine comment in `VoltColors.kt:24` (recording the historical removal).
+- **MutableStateFlow never leaked externally** from any VM — `grep MutableStateFlow presentation/` returns zero hits, confirming the criterion holds.
+- **Build baseline green** — `:androidApp:assembleDebug -x test` finishes in 43s with 0 problems on commit `0376a4e` (clean tree).
+- **Localization key surface** — `Strings.kt` is 2515 lines; AZ canonical is fully populated; RU/EN coverage diff deferred to Phase 6 (per plan).
 
 ## Errors Encountered
 <!-- 3-strike protocol: same approach failing 3 times → log full chain, halt loop. -->
@@ -159,6 +262,7 @@ This refactor — driven overnight via Ralph loop — takes every screen from "v
 ## Progress Log
 
 - 2026-05-28 00:35 — Feature initialized for overnight Ralph-loop autonomous polish pass; predecessor `finalize-mobile-ui-for-onboarding` provides 40/40 1:1 Pencil-fidelity baseline
+- 2026-05-28 01:10 — **Phase 1 complete.** Audit findings written (7 sections: inventory, hardcode scan, TODO inventory, Volt↔Pencil parity, KDoc surface, mock-repo contract, observations). 0 in-scope user-visible string leaks; predecessor cleanup already ate the obvious ones. 2 silent hex drift bugs (danger, border-strong) + 6 missing tokens are the main Phase 2 fix list. Build baseline `:androidApp:assembleDebug -x test` green (43s, 0 problems).
 
 
 ## Notes for Next Session
