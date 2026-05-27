@@ -24,7 +24,7 @@ Phase 1: Analysis → Phase 2: Planning → Phase 3: Solutioning → Phase 4: Im
 
 | Mexanizm | Necə çağırılır | Nə olur |
 |---|---|---|
-| **Skill** | `bmad-create-prd` yazırsan | Birbaşa workflow başlayır |
+| **Skill** | `bmad-prd` yazırsan | Birbaşa workflow başlayır (intent auto-detect) |
 | **Agent Trigger** | Agenti yüklə (`bmad-agent-pm`), sonra `CP` yaz | Agent öz menüsündən seçimi işləyir |
 
 **Qısa qayda:** Hansı workflow istədiyini bilirsən → skill. Agent ilə artıq söhbət edirsən → trigger.
@@ -79,10 +79,9 @@ Hər böyük arxitektura qərarından sonra bu faylı güncəllə.
 
 | Skill | Agent | Trigger | Nə edir | Output |
 |---|---|---|---|---|
-| `bmad-create-prd` | John (PM) | `CP` | Product Requirements Document — FRs, NFRs, success metrics | `PRD.md` |
-| `bmad-edit-prd` | John (PM) | `EP` (edit) | Mövcud PRD-i yenilə/genişləndir | Updated `PRD.md` |
-| `bmad-validate-prd` | John (PM) | `VP` | PRD-i standarta görə yoxla | PASS/FAIL report |
-| `bmad-create-ux-design` | Sally (UX) | `CU` | UX pattern-lər + dizayn spec | `ux-spec.md` |
+| `bmad-prd` | John (PM) | `CP`/`EP`/`VP` | **Unified** — Create/Update/Validate intent auto-detect; PRD Quality Rubric validator; HTML+markdown reports (v6.7+) | `PRD.md` + `.decision-log.md` + `addendum.md` |
+| `bmad-spec` | — | `SP` | Brain dump / messy intent → 5-field SPEC kernel (Problem/Capabilities/Constraints/Non-goals/Success) (v6.8+) | `SPEC.md` |
+| `bmad-ux` | Sally (UX) | `CU` | **Two-spine** — DESIGN.md (visual tokens, Google Labs spec) + EXPERIENCE.md (behavior/flow/IA/states/a11y) (v6.8+) | `DESIGN.md` + `EXPERIENCE.md` |
 
 ---
 
@@ -134,7 +133,7 @@ Bunlar heç bir agent session tələb etmir — birbaşa çağır.
 | `bmad-advanced-elicitation` | Task | LLM output-unu Socratic / first-principles / pre-mortem / red-team ilə dərinləşdir | Çıxış sığ/generic hiss etdirəndə |
 | `bmad-party-mode` | Workflow | Bütün agentlər eyni anda konuşur, çoxlu perspektiv | Böyük qərar, birinin fikri ilə qalmaq istəmədikdə |
 | `bmad-brainstorming` | Workflow | Strukturlu ideation, 100+ ideyaya qədər | Yeni feature, problem space exploration |
-| `bmad-distillator` | Task | Böyük doc-u 3:1 nisbətilə LLM-optimized sıxışdırır | Doc context window-a sığmayanda, token qənaəti |
+| `bmad-investigate` | Task | Forensic case investigation — evidence-graded findings (Confirmed/Deduced/Hypothesized), delegation discipline (v6.7+) | Bug triage, incident RCA, unfamiliar codebase exploration |
 | `bmad-editorial-review-prose` | Task | Copy-editing — ifadə aydınlığı | Sənədi polish etmək istəyəndə |
 | `bmad-editorial-review-structure` | Task | Structural edit — cut/merge/move önerilər | Çoxlu subprocessdən çıxmış sənəd incoherent görünəndə |
 | `bmad-shard-doc` | Task | Böyük markdown-ı ## header-lara görə parçala | 500+ sətir doc, LLM context idarəsi |
@@ -234,7 +233,8 @@ Bunlar heç bir agent session tələb etmir — birbaşa çağır.
 | `bmad-prfaq` | Working Backwards PRFAQ challenge |
 | `bmad-product-brief` | Product brief yarat |
 | `bmad-checkpoint-preview` | Human-in-the-loop review — dəyişikliyi izah et, testə yönləndir |
-| `bmad-distillator` | Sənədi lossless LLM sıxışdır (3:1) |
+| `bmad-spec` | Brain dump → 5-field SPEC kernel (v6.8+ unified, distillator-ı əvəz edir) |
+| `bmad-investigate` | Forensic case investigation, evidence-graded (v6.7+) |
 
 ---
 
@@ -369,7 +369,7 @@ persistent_facts = ["Yeni fakt 1.", "Yeni fakt 2."]
 | Phase | Hazır sayılır |
 |---|---|
 | Phase 1 | Research findings + product-brief.md + PRFAQ tamamlandı |
-| Phase 2 | PRD validate keçdi (bmad-validate-prd PASS) |
+| Phase 2 | PRD validate keçdi (`bmad-prd` validate intent PASS) |
 | Phase 3 | Architecture + Epics + Implementation Readiness PASS |
 | Phase 4 | Hər story: Dev Story → Code Review APPROVED → QA tests green |
 
@@ -395,8 +395,8 @@ Hər ikisi bitdikdən sonra finalize et.
 1. bmad-technical-research  → KMM+Supabase+GCP AI stack validation
 2. bmad-product-brief       → Rəsmi brief yarat (araşdırma bazasında)
 3. bmad-prfaq               → "Working Backwards" stress-test
-4. [Phase 2]  bmad-create-prd    → PRD (John/PM)
-5. [Phase 2]  bmad-create-ux-design → UX spec (Sally/UX)
+4. [Phase 2]  bmad-prd          → PRD (John/PM, create intent)
+5. [Phase 2]  bmad-ux           → UX spec (Sally/UX, DESIGN.md + EXPERIENCE.md)
 6. [Phase 3]  bmad-create-architecture → Arxitektura (Winston)
 7. [Phase 3]  bmad-create-epics-and-stories → Epic + Story-lər
 8. [Phase 3]  bmad-check-implementation-readiness → Gate check
@@ -418,7 +418,8 @@ bmad-review-adversarial-general  → 10+ problem tap (hər deliverable-da işlə
 bmad-review-edge-case-hunter     → Unhandled path-lar
 bmad-advanced-elicitation        → Output-u dərinləşdir (Socratic/first-principles)
 bmad-party-mode                  → Bütün agentlər eyni anda
-bmad-distillator                 → Doc-u 3:1 sıxışdır
+bmad-spec                        → Brain dump → SPEC kernel (5-field)
+bmad-investigate                 → Forensic case investigation, evidence-graded
 bmad-brainstorming               → 100+ ideyaya qədər strukturlu ideation
 bmad-quick-dev                   → Kiçik iş, plan lazım yox
 ```
@@ -465,7 +466,7 @@ Zəif tərəfləri:
 
 ```
 Addım 1: bmad-technical-research    → KMM+Supabase+GCP feasibility doc
-Addım 2: bmad-distillator           → Mövcud docs-ları sıxışdır
+Addım 2: bmad-spec                  → Mövcud docs → 5-field SPEC kernel (v6.8+ distillator-ı əvəz edir)
 Addım 3: bmad-generate-project-context  → Agent-optimized format
 Addım 4: bmad-editorial-review-structure → Structural cuts
 Addım 5: bmad-review-adversarial-general → Kritik məlumat itib?
@@ -486,16 +487,15 @@ Research topic: "KMM + Supabase + RevenueCat + GCP Cloud AI — fitnessApp MVP f
 Output: _bmad-output/tech-research-kmm-supabase.md
 ```
 
-#### Addım 2: `bmad-distillator`
-**Niyə?** Mövcud docs-ları (project-context.md + CLAUDE.md + feature.md decisions) 3:1 nisbəti ilə sıxışdırır. Məlumat itirilmir, amma prose azalır.
+#### Addım 2: `bmad-spec` (v6.8+ — bmad-distillator yerinə)
+**Niyə?** Mövcud docs-ları (project-context.md + CLAUDE.md + feature.md decisions) 5-field SPEC kernel formatına gətirir: Problem, Capabilities, Constraints, Non-goals, Success signal. Distillator-dan fərqli olaraq, struktur fixed-dir və downstream skill-lər (bmad-prd, bmad-ux, bmad-create-architecture) onu birbaşa istehlak edir.
 
 ```
-Yeni chat aç → bmad-distillator
-source_documents: docs/project-context.md, CLAUDE.md
-downstream_consumer: "BMad agent context — project-context.md generation"
-token_budget: ~300 lines
---validate flag: isteğe bağlı (round-trip test)
-Output: distillate faylı → sonra generate-project-context-ə input kimi istifadə
+Yeni chat aç → bmad-spec
+input_sources: docs/project-context.md, CLAUDE.md
+intent_type: brain_dump  (alternativ: prd / transcript / brief)
+Output: _bmad-output/specs/spec-<slug>/SPEC.md
+        + companions: catalogs.md, diagrams.md (lazımdırsa)
 ```
 
 #### Addım 3: `bmad-generate-project-context`
@@ -554,7 +554,7 @@ Hər addımdan sonra gözlə bir bax:
 Əgər texniki research lazım deyil (stack artıq müəyyəndirsə) — Addım 1-i atla:
 
 ```
-Addım 1: bmad-distillator          → Mövcud docs sıxışdır
+Addım 1: bmad-spec                 → Mövcud docs → 5-field SPEC (v6.8+)
 Addım 2: bmad-generate-project-context → Agent-optimized format
 Addım 3: bmad-editorial-review-structure → Structural cuts
 Addım 4: bmad-review-adversarial-general → Kritik məlumat yoxlaması
@@ -716,10 +716,10 @@ Output: _bmad-output/perspective-ux.md, max 150 lines."
 
 ### 9e. Wave C — Synthesis (Sequential)
 
-#### Addım C1: `bmad-distillator`
+#### Addım C1: `bmad-spec` (v6.8+)
 ```
-Yeni chat → bmad-distillator
-source_documents:
+Yeni chat → bmad-spec
+input_sources:
   - _bmad-output/perspective-analyst.md
   - _bmad-output/perspective-pm.md
   - _bmad-output/perspective-architect.md
@@ -888,5 +888,5 @@ A: Agent hər session başında avtomatik context-ə yüklədiyi fakt-lar. "Bizi
 **Q: party-mode nə vaxt istifadə etməli?**
 A: Böyük qərar, bir agentin perspektivi ilə qalmaq istəmədikdə. Bütün agentlər paralel düşünür, bir-birilərinə etiraz edir. Solo dev üçün qiymətli.
 
-**Q: bmad-distillator nə vaxt lazımdır?**
-A: Market research output-u, PRD, arxitektura sənədi artıq çox böyükdür və agent-ə tam context vermək istəyirsən. 3:1 nisbəti ilə sıxışdırır, məlumat itirilmir.
+**Q: bmad-spec (v6.8+ bmad-distillator-ı əvəz edir) nə vaxt lazımdır?**
+A: Messy intent — brain dump, PRD, transcript, brief — 5-field SPEC kernel-ə distill etmək lazım olduqda. Downstream skill-lər (bmad-prd, bmad-ux, bmad-create-architecture) bu kernel-i birbaşa istehlak edir. distillator-dan fərqli: lossless deyil, qəsdən "lean" formatdadır (Problem / Capabilities / Constraints / Non-goals / Success). Catalogs, tables, diagrams ayrı companion fayllara çıxır.

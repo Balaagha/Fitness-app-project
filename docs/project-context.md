@@ -619,4 +619,5 @@ Yeni sənəd yaradanda §1c (Minimal Documentation Principle) qaydalarına riay�
 
 ---
 
-> v3.1 — 2026-05-17. Validation: 2 paralel agent (validator: 9/10 NOW confirmed + 3 PRD→NOW promote + cycle Faza 2; drafter: §5.6 prompt blueprint + §5.7 streak/modifier + §10.6 data loss + 6 mechanical fix). Cycle tracking deferred to Faza 2 (BetterMe/Freeletics/Fitbod parity yoxdur, AZ kültür hassasiyyəti). Növbəti faza: PRD (`bmad-create-prd`) → Architect (`bmad-create-architecture`).
+> v3.1 — 2026-05-17. Validation: 2 paralel agent (validator: 9/10 NOW confirmed + 3 PRD→NOW promote + cycle Faza 2; drafter: §5.6 prompt blueprint + §5.7 streak/modifier + §10.6 data loss + 6 mechanical fix). Cycle tracking deferred to Faza 2 (BetterMe/Freeletics/Fitbod parity yoxdur, AZ kültür hassasiyyəti). Növbəti faza: PRD (`bmad-prd` create intent) → Architect (`bmad-create-architecture`).
+> v3.2 — 2026-05-27. BMad 6.6.0 → 6.8.0 upgrade: deprecated `bmad-create-prd`/`bmad-edit-prd`/`bmad-validate-prd` → unified `bmad-prd` (Create/Update/Validate intents auto-detect); `bmad-create-ux-design` → `bmad-ux` (DESIGN.md + EXPERIENCE.md spine); `bmad-distillator` → `bmad-spec` (5-field kernel). Shims v7-ə qədər qalır, migration tamamlandı.

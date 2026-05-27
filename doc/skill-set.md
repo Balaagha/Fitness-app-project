@@ -45,11 +45,10 @@
 | Skill | Agent / Persona | Ne yapar | Proje ile ilgisi |
 |-------|----------------|----------|-----------------|
 | `bmad-agent-pm` | John 📋 | PRD, epics, stakeholder sync | ⭐ Ana planlama ajanı |
-| `bmad-create-prd` | — | Yapılandırılmış PRD workflow | ⭐ PM agent üzerinden |
-| `bmad-validate-prd` | — | PRD kalite kontrolü | ⭐ PRD tamamlanınca |
-| `bmad-edit-prd` | — | PRD düzeltme | ⭐ Validasyon sonrası |
+| `bmad-prd` | — | **Unified** PRD workflow — Create/Update/Validate intent auto-detect (v6.7+) | ⭐ PM agent üzerinden |
+| `bmad-spec` | — | 5-field kernel (Problem/Capabilities/Constraints/Non-goals/Success) — intent distillation (v6.8+) | ⭐ Mess input → tight spec |
 | `bmad-agent-ux-designer` | Sally 🎨 | UX akışı, wireframe, kullanıcı yolculuğu | ⭐ PRD sonrası |
-| `bmad-create-ux-design` | — | UX tasarım workflow | ⭐ UX agent üzerinden |
+| `bmad-ux` | — | **Two-spine** UX — DESIGN.md (visual tokens) + EXPERIENCE.md (behavior/flow/IA) (v6.8+) | ⭐ UX agent üzerinden |
 
 ---
 
@@ -88,7 +87,7 @@
 | `bmad-review-edge-case-hunter` | Path tracing, edge case tarama | ⭐ Her kritik feature |
 | `bmad-advanced-elicitation` | Output'u ikinci geçişle derinleştir | ⭐ Yetersiz sonuç gelince |
 | `bmad-party-mode` | Multi-agent tartışma | ⭐ Zor mimari kararlar |
-| `bmad-distillator` | Uzun belgeyi 3:1 sıkıştır | ⭐ Büyük spec'leri kısalt |
+| `bmad-investigate` | Forensic case investigation — evidence-graded (Confirmed/Deduced/Hypothesized) (v6.7+) | ⭐ Bug triage, RCA, unfamiliar code |
 | `bmad-correct-course` | Scope sapması / yoldan çıkınca düzelt | ⭐ Scope kayarsa |
 | `bmad-retrospective` | Epic sonrası lesson learned | ⭐ Her epic bitince |
 | `bmad-agent-tech-writer` | Paige 📚 — teknik dokümantasyon | ○ API docs, README |
@@ -159,9 +158,9 @@ Yeni skill, workflow veya modül oluşturmak için. Günlük kullanım değil.
 
 | Komut | BMad Karşılığı | Karar |
 |-------|---------------|-------|
-| `/write-spec` | `bmad-create-prd` | BMad daha kapsamlı; hızlı taslak için PM plugin |
+| `/write-spec` | `bmad-prd` (create intent) | BMad daha kapsamlı; hızlı taslak için PM plugin |
 | `/competitive-brief` | `bmad-market-research` | BMad daha derin |
-| `/roadmap-update` | `bmad-edit-prd` | BMad'ı tercih et |
+| `/roadmap-update` | `bmad-prd` (update intent) | BMad'ı tercih et |
 | `/brainstorm` | `bmad-brainstorming` | BMad'ı tercih et |
 | `/sprint-planning` | `bmad-sprint-planning` | BMad'ı tercih et |
 | `/synthesize-research` | `bmad-domain-research` | BMad'ı tercih et |
