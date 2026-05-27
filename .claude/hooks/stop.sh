@@ -23,6 +23,13 @@ INPUT=$(cat 2>/dev/null || echo '{}')
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
 SCRIPT_DIR="$PROJECT_DIR/.claude/scripts"
 
+# Ralph Loop bypass: when the ralph-loop plugin is actively running an
+# autonomous iteration in this project, skip propose-confirm so the loop
+# is not interrupted. The plugin creates/removes this state file itself.
+if [ -f "$PROJECT_DIR/.claude/ralph-loop.local.md" ]; then
+  exit 0
+fi
+
 # Extract session_id (jq if available, grep fallback)
 SESSION_ID=""
 if [ -x "$SCRIPT_DIR/json-extract.sh" ]; then
